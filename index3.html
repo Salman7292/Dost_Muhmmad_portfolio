@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dost Muhammad | AI Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .neural-node {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 6px rgba(59, 130, 246, 0.3);
+            animation: nodePulse 4s infinite ease-in-out;
+        }
+        .neural-connection {
+            position: absolute;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.15), transparent);
+            transform-origin: 0 0;
+            opacity: 0.4;
+        }
+        @keyframes nodePulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .rounded-header {
+            border-radius: 0 0 2rem 2rem;
+            /* Light mode: darker blue for white text contrast */
+            background: linear-gradient(to right, #1d4ed8, #1e40af);
+        }
+        .dark .rounded-header {
+            /* Dark mode: slightly brighter for visual balance */
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+        }
+        .hero-text-shadow {
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Hero Section with Animated Background */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #0f172a, #1e3a8a, #0f172a);
+            padding-top: 80px; /* Added top padding to create space below header */
+        }
+        
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px; /* Made scrollbar thinner */
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; /* Light mode track */
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b; /* Dark mode track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* Light mode thumb */
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; /* Dark mode thumb */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* Light mode hover */
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Dark mode hover */
+        }
+        
+        /* Publication card hover effect */
+        .publication-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-inter bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-primary-700 dark:text-primary-400">Dost Muhammad</a>
+                <div class="flex items-center space-x-4">
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#" data-page="home" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+                        <a href="#" data-page="about" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                        <a href="#" data-page="research" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Research</a>
+                        <a href="#" data-page="publications" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Publications</a>
+                        <a href="#" data-page="blog" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Blog</a>
+                        <a href="#" data-page="contact" class="page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+                    </div>
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden text-slate-700 dark:text-slate-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4 pb-4">
+                <a href="#" data-page="home" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+                <a href="#" data-page="about" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="#" data-page="research" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Research</a>
+                <a href="#" data-page="publications" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Publications</a>
+                <a href="#" data-page="blog" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Blog</a>
+                <a href="#" data-page="contact" class="block page-link text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+        <!-- Hero Section with Animated Background -->
+        <div class="hero-section">
+            <!-- Animated Neural Network Background -->
+            <div id="neural-network" class="absolute inset-0"></div>
+            
+            <!-- Hero Content -->
+            <div class="container mx-auto px-6 z-10">
+                <div class="max-w-4xl mx-auto text-center text-white">
+                    <div class="w-40 h-40 mx-auto mb-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-4 border-white/30">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-4xl font-bold">
+                            <img src="12.png" alt="Dost Muhammad" class="w-28 h-28 rounded-full object-cover">
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">
+                        Dost Muhammad
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-slate-100 hero-text-shadow animate-slide-up" style="animation-delay: 0.1s">
+                        AI Researcher | PhD Scholar | Passionate Computing Tech Learner
+                    </p>
+                    <p class="text-lg md:text-xl mb-10 text-slate-200 max-w-2xl mx-auto hero-text-shadow animate-slide-up" style="animation-delay: 0.2s">
+                        Researcher @ Research Ireland, CRT-AI, ADAPT
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s">
+                        <a href="#" data-page="publications" class="page-link bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg font-medium transition-colors backdrop-blur-sm border border-white/20">
+                            View Research
+                        </a>
+                        <a href="#" data-page="contact" class="page-link bg-white dark:bg-slate-100 text-primary-700 dark:text-primary-800 hover:bg-slate-100 dark:hover:bg-slate-200 px-8 py-3 rounded-lg font-medium transition-colors">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Intro Section -->
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto rounded-xl bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-university text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-800 dark:text-slate-200">University of Galway</h3>
+                        <p class="text-slate-600 dark:text-slate-400">PhD in Artificial Intelligence</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto rounded-xl bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-800 dark:text-slate-200">Explainable AI</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Research Focus</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto rounded-xl bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-flask text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-800 dark:text-slate-200">10+ Publications</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Q1 Journals & Conferences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Research Section -->
+        <div class="py-20 bg-slate-50 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800 dark:text-slate-200">Featured Research</h2>
+                <p class="text-lg text-center mb-16 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Highlighted publications in top-tier journals and conferences</p>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200">ALL Diagnosis with Explainable DL</h3>
+                            <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Scientific Reports, Nature, Q1</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">Explainable deep learning approach for Acute Lymphoblastic Leukemia (ALL) diagnosis with improved interpretability for clinical applications.</p>
+                        <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200">Explainable Deep Learning in Oncology</h3>
+                            <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded">ECAI 2024, A</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">Application of explainable deep learning models for oncology research and clinical decision support with focus on transparency.</p>
+                        <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="#" data-page="publications" class="page-link inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium">
+                        View All Publications
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other pages remain unchanged -->
+    <!-- About Page -->
+    <section id="about-page" class="page">
+        <div class="pt-24 pb-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-800 dark:text-slate-200">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="relative">
+                            <div class="w-64 h-64 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-6xl font-bold shadow-xl">
+                                <img src="12.png" alt="Dost Muhammad" class="w-60 h-60 rounded-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-green-500 border-4 border-white dark:border-slate-900"></div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <p class="text-lg text-slate-700 dark:text-slate-300 mb-6">
+                            Dost Muhammad is a dedicated AI researcher with a BS (Hons) in Computer Science and an MS in Artificial Intelligence. Currently pursuing a PhD at the School of Computer Science, University of Galway, Ireland (CRT-AI & ADAPT centres).
+                        </p>
+                        <p class="text-lg text-slate-700 dark:text-slate-300 mb-6">
+                            His work focuses on <span class="font-semibold text-primary-600 dark:text-primary-400">Explainable AI (XAI)</span>, <span class="font-semibold text-primary-600 dark:text-primary-400">eXplainable Deep Learning</span>, <span class="font-semibold text-primary-600 dark:text-primary-400">Responsible AI</span>, <span class="font-semibold text-primary-600 dark:text-primary-400">Multimodal AI</span>, <span class="font-semibold text-primary-600 dark:text-primary-400">Knowledge Graphs</span>, and <span class="font-semibold text-primary-600 dark:text-primary-400">Medical Imaging</span>.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-slate-700 dark:text-slate-300">PhD in AI (In Progress)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-university text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-slate-700 dark:text-slate-300">University of Galway</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-slate-700 dark:text-slate-300">Galway, Ireland</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-briefcase text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-slate-700 dark:text-slate-300">CRT-AI & ADAPT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-6xl mx-auto mt-20">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-8 text-slate-800 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700 pb-2">Education</h3>
+                            <div class="space-y-8">
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">PhD in Artificial Intelligence</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">University of Galway, Ireland</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">2021 - Present</p>
+                                </div>
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">MS in Artificial Intelligence</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">University of Galway, Ireland</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">2019 - 2021</p>
+                                </div>
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">BS (Hons) in Computer Science</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">University of Galway, Ireland</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">2015 - 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-8 text-slate-800 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700 pb-2">Experience</h3>
+                            <div class="space-y-8">
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">AI Researcher</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Research Ireland, CRT-AI, ADAPT</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">2021 - Present</p>
+                                </div>
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Research Assistant</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">University of Galway</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">2019 - 2021</p>
+                                </div>
+                                <div class="relative pl-8 border-l-2 border-primary-500 dark:border-primary-400">
+                                    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 dark:bg-primary-400"></div>
+                                    <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">AI Intern</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Tech Solutions Ltd.</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-500">Summer 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Page -->
+    <section id="research-page" class="page">
+        <div class="pt-24 pb-20 bg-slate-50 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800 dark:text-slate-200">Research Focus</h2>
+                <p class="text-lg text-center mb-16 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Exploring the frontiers of Explainable AI and its applications</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Explainable AI (XAI)</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Developing transparent and interpretable AI systems that provide insights into their decision-making processes.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-project-diagram text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">eXplainable Deep Learning</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Creating methods to interpret and explain complex deep learning models for various applications.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Evaluation Metrics for XAI</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Designing quantitative and qualitative metrics to assess the effectiveness of XAI methods.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Multi-models & Knowledge Graphs</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Integrating multiple AI models and leveraging knowledge graphs for enhanced reasoning and explainability.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-language text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Explainable NLP</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Developing interpretable natural language processing models that provide transparent text analysis.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-4">
+                            <i class="fas fa-lungs text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Medical Imaging with AI</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Applying AI and XAI techniques to medical imaging for improved diagnosis and treatment planning.</p>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto mt-20">
+                    <h3 class="text-2xl font-semibold mb-8 text-center text-slate-800 dark:text-slate-200">Research Approach</h3>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-md border border-slate-200 dark:border-slate-700">
+                        <p class="text-lg text-slate-700 dark:text-slate-300 mb-6">
+                            My research follows an interdisciplinary approach, combining theoretical foundations with practical applications. I focus on developing AI systems that are not only accurate but also transparent, interpretable, and trustworthy.
+                        </p>
+                        <p class="text-lg text-slate-700 dark:text-slate-300">
+                            By bridging the gap between complex AI models and human understanding, my work aims to make AI more accessible and reliable for critical applications in healthcare, finance, and other domains where decision transparency is essential.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Page -->
+    <section id="publications-page" class="page">
+        <div class="pt-24 pb-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800 dark:text-slate-200">Publications</h2>
+                <p class="text-lg text-center mb-16 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Research contributions in top-tier journals and conferences</p>
+                <div class="max-w-6xl mx-auto">
+                    <h3 class="text-2xl font-semibold mb-8 text-primary-700 dark:text-primary-400 border-b border-slate-200 dark:border-slate-700 pb-2">Published Research</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                        <a href="https://www.nature.com/articles/s41598-024-54310-7" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">ALL Diagnosis with Explainable DL</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Scientific Reports, Nature, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Explainable deep learning approach for Acute Lymphoblastic Leukemia (ALL) diagnosis.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2024</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S095741742302123X" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Stock Market Trends Prediction using DL and XAI</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Heliyon, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Deep learning approach with explainable AI for stock market trend prediction and analysis.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2023</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.mdpi.com/2076-3417/13/5/3210" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Seismic (Earthquake) Prediction with In-sample and Out-sample testing</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Applied Science, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Advanced ML models for earthquake prediction with rigorous in-sample and out-sample validation.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2023</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0166361522001562" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Financial Time Series Analysis Using ML</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Computer in Industry, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Machine learning techniques for financial time series forecasting and pattern recognition.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2022</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://onlinelibrary.wiley.com/doi/10.1002/cpe.7890" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Human Emotion Detection with XAI</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">Complexity, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Explainable AI approach for human emotion detection from multimodal data sources.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2022</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://ieeexplore.ieee.org/document/10123456" target="_blank" class="publication-card bg-slate-50 dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">Randomized Explainable ML Models for Medical Diagnosis</h4>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">IEEE JBHI, Q1</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Randomized and explainable ML approaches for improved medical diagnosis and decision support.</p>
+                            <div class="flex items-center text-slate-500 dark:text-slate-500 text-sm">
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>2021</span>
+                                <i class="fas fa-external-link-alt ml-4 text-primary-500"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-8 text-primary-700 dark:text-primary-400 border-b border-slate-200 dark:border-slate-700 pb-2">Research Under Review</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">IEEE Transactions on Service Computing</h4>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">IEEE Transactions on Medical Imaging</h4>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Scientific Reports</h4>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">ACM Computing Surveys</h4>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Information Fusion</h4>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 text-center border border-slate-300 dark:border-slate-700">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Other Q1 Journals</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Page -->
+    <section id="blog-page" class="page">
+        <div class="pt-24 pb-20 bg-slate-50 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800 dark:text-slate-200">AI Research Blog</h2>
+                <p class="text-lg text-center mb-16 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Insights, tutorials, and thoughts on Explainable AI and Machine Learning</p>
+                
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        <!-- Blog Post 1 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-600 flex items-center justify-center">
+                                <i class="fas fa-brain text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">XAI Tutorial</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Understanding SHAP Values in Explainable AI</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">A comprehensive guide to SHAP (SHapley Additive exPlanations) and how they help interpret complex machine learning models.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> March 15, 2024</span>
+                                    <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 2 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-chart-line text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">Research</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Evaluating XAI Methods: Beyond Accuracy</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">Exploring quantitative metrics for assessing the quality of explanations in Explainable AI systems and why accuracy alone isn't enough.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> February 28, 2024</span>
+                                    <span><i class="far fa-clock mr-1"></i> 12 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 3 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center">
+                                <i class="fas fa-lungs text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">Case Study</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">XAI in Medical Imaging: A Practical Implementation</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">Case study on implementing explainable AI for medical image analysis and how it improves diagnostic confidence.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> February 12, 2024</span>
+                                    <span><i class="far fa-clock mr-1"></i> 10 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 4 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                                <i class="fas fa-project-diagram text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">Tutorial</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Building Interpretable Neural Networks with Attention</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">Step-by-step guide to implementing attention mechanisms in neural networks for better interpretability and performance.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> January 25, 2024</span>
+                                    <span><i class="far fa-clock mr-1"></i> 15 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 5 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center">
+                                <i class="fas fa-language text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">NLP</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">Explainable NLP: Making Language Models Transparent</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">Exploring techniques to make large language models more interpretable and trustworthy for real-world applications.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> January 8, 2024</span>
+                                    <span><i class="far fa-clock mr-1"></i> 11 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 6 -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <div class="h-48 bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-6xl text-white opacity-80"></i>
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium px-2.5 py-0.5 rounded mb-3">Ethics</span>
+                                <h3 class="text-xl font-semibold mb-3 text-slate-800 dark:text-slate-200">The Ethics of Explainable AI in Healthcare</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-4">Examining the ethical implications and responsibilities when deploying XAI systems in sensitive domains like healthcare.</p>
+                                <div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-500">
+                                    <span><i class="far fa-calendar mr-1"></i> December 20, 2023</span>
+                                    <span><i class="far fa-clock mr-1"></i> 9 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
+                            Load More Articles
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact-page" class="page">
+        <div class="pt-24 pb-20 bg-slate-50 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800 dark:text-slate-200">Get In Touch</h2>
+                <p class="text-lg text-center mb-16 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Let's collaborate on cutting-edge AI research</p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md p-8 md:p-12">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Contact Info -->
+                            <div>
+                                <h3 class="text-2xl font-semibold mb-6 text-primary-700 dark:text-primary-400">Contact Information</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mr-4">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Email</h4>
+                                            <p class="text-slate-600 dark:text-slate-400">dost.muhammad@universityofgalway.ie</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mr-4">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Location</h4>
+                                            <p class="text-slate-600 dark:text-slate-400">University of Galway, Ireland</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex items-center justify-center mr-4">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-slate-800 dark:text-slate-200">Affiliations</h4>
+                                            <p class="text-slate-600 dark:text-slate-400">Research Ireland, CRT-AI, ADAPT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-8">
+                                    <h4 class="font-medium text-slate-800 dark:text-slate-200 mb-4">Connect with me</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="#" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                            <i class="fab fa-google-scholar"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                            <i class="fab fa-researchgate"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Contact Form -->
+                            <div>
+                                <h3 class="text-2xl font-semibold mb-6 text-primary-700 dark:text-primary-400">Send a Message</h3>
+                                <form class="space-y-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Name</label>
+                                        <input type="text" id="name" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                                        <input type="email" id="email" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+                                    </div>
+                                    <div>
+                                        <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+                                        <input type="text" id="subject" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200"></textarea>
+                                    </div>
+                                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-medium transition-colors">
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 dark:bg-slate-950 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">Dost Muhammad</h3>
+                    <p class="text-slate-400 mt-2">AI Researcher | PhD Scholar</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-google-scholar text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-researchgate text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+                <p>&copy; 2025 Dost Muhammad. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Page Navigation
+        document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                document.getElementById(`${targetPage}-page`).classList.add('active');
+                history.pushState(null, null, `#${targetPage}`);
+                document.getElementById('mobile-menu').classList.add('hidden');
+                window.scrollTo(0, 0);
+            });
+        });
+
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.substring(1) || 'home';
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`${hash}-page`).classList.add('active');
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+        themeToggle.addEventListener('click', function() {
+            themeIcon.classList.toggle('fa-moon');
+            themeIcon.classList.toggle('fa-sun');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Neural Network Animation
+        function createNeuralNetwork() {
+            const container = document.getElementById('neural-network');
+            if (!container) return;
+            
+            const width = container.offsetWidth;
+            const height = container.offsetHeight;
+            
+            // Create nodes
+            const nodes = [];
+            const nodeCount = 30;
+            
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                
+                const size = Math.random() * 6 + 2;
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                
+                node.style.width = `${size}px`;
+                node.style.height = `${size}px`;
+                node.style.left = `${x}px`;
+                node.style.top = `${y}px`;
+                
+                container.appendChild(node);
+                nodes.push({ element: node, x, y, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3 });
+            }
+            
+            // Create connections
+            const connections = [];
+            
+            function updateConnections() {
+                // Remove old connections
+                connections.forEach(conn => {
+                    if (conn.element.parentNode) {
+                        conn.element.parentNode.removeChild(conn.element);
+                    }
+                });
+                connections.length = 0;
+                
+                // Create new connections
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 150) {
+                            const connection = document.createElement('div');
+                            connection.className = 'neural-connection';
+                            
+                            const angle = Math.atan2(dy, dx);
+                            connection.style.width = `${distance}px`;
+                            connection.style.height = '1px';
+                            connection.style.left = `${nodes[i].x}px`;
+                            connection.style.top = `${nodes[i].y}px`;
+                            connection.style.transform = `rotate(${angle}rad)`;
+                            connection.style.opacity = (1 - distance / 150) * 0.5;
+                            
+                            container.appendChild(connection);
+                            connections.push({ element: connection, i, j });
+                        }
+                    }
+                }
+            }
+            
+            // Animation loop
+            function animate() {
+                nodes.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
+                    
+                    // Bounce off edges
+                    if (node.x < 0 || node.x > width) node.vx *= -1;
+                    if (node.y < 0 || node.y > height) node.vy *= -1;
+                    
+                    // Keep within bounds
+                    node.x = Math.max(0, Math.min(width, node.x));
+                    node.y = Math.max(0, Math.min(height, node.y));
+                    
+                    node.element.style.left = `${node.x}px`;
+                    node.element.style.top = `${node.y}px`;
+                });
+                
+                updateConnections();
+                requestAnimationFrame(animate);
+            }
+            
+            // Initialize connections
+            updateConnections();
+            
+            // Start animation
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                // Recreate the network on resize
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+                createNeuralNetwork();
+            });
+        }
+
+        // Initialize neural network when home page is active
+        if (document.getElementById('home-page').classList.contains('active')) {
+            createNeuralNetwork();
+        }
+
+        // Re-init when returning to home
+        document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const target = this.getAttribute('data-page');
+                if (target === 'home') {
+                    setTimeout(() => {
+                        createNeuralNetwork();
+                    }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
