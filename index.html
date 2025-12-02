@@ -433,6 +433,43 @@
                 font-size: 1rem;
             }
         }
+
+        /* Subtle scrollbar that shows on hover */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.1); /* Very faint */
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3); /* Slightly visible on hover */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.1);
+}
+
+.dark :hover::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.1) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgba(100, 116, 139, 0.1) transparent;
+}
     </style>
 
     <script>
