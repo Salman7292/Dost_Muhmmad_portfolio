@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Mohammad Muazzam Sharif - Assistant Professor of English | AWK University Mardan</title>
-    <meta name="description" content="Assistant Professor in English Department, Abdul Wali Khan University Mardan. PhD from University of Southampton, UK. Fulbright alumnus. Expert in Pakistani literature, Shakespearean studies, and postcolonial literature.">
-    
+    <meta name="description"
+        content="Assistant Professor in English Department, Abdul Wali Khan University Mardan. PhD from University of Southampton, UK. Fulbright alumnus. Expert in Pakistani literature, Shakespearean studies, and postcolonial literature.">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -44,516 +46,836 @@
             }
         }
     </script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Critical CSS for above-the-fold content */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #414545;
-            overflow-x: hidden;
-        }
-
-        .dark body {
-            background: #0f172a;
-            color: #e2e8f0;
-        }
-
-        /* Optimized animations */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            0% {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            0% {
-                transform: translateX(-20px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* Sidebar Styles - FIXED TOGGLE POSITION */
-        .sidebar {
-            width: 280px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            transition: all 0.3s ease;
-            z-index: 50;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(180deg, #350018 0%, #1e293b 100%);
-        }
-
-        .sidebar.collapsed {
-            width: 70px;
-        }
-
-        .sidebar.collapsed .sidebar-content {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .sidebar.collapsed .profile-img {
-            width: 40px;
-            height: 40px;
-            margin: 15px auto;
-        }
-
-        .sidebar.collapsed .toggle-btn {
-            right: 10px;
-            top: 10px;
-            transform: translateX(0) !important;
-        }
-
-        .sidebar.collapsed .nav-text {
-            display: none;
-        }
-
-        .sidebar.collapsed .nav-btn {
-            justify-content: center;
-            padding: 12px 0;
-        }
-
-        .sidebar.collapsed .nav-btn i {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .main-content {
-            margin-left: 280px;
-            transition: margin-left 0.3s ease;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar.collapsed ~ .main-content {
-            margin-left: 70px;
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0 !important;
-            }
-            .sidebar.collapsed {
-                transform: translateX(-100%);
-            }
-            .sidebar.collapsed.active {
-                transform: translateX(0);
-                width: 280px;
-            }
-            .sidebar.collapsed.active .sidebar-content {
-                opacity: 1;
-                pointer-events: all;
-            }
-            .sidebar.collapsed.active .nav-text {
-                display: inline;
-            }
-            .sidebar.collapsed.active .nav-btn {
-                justify-content: flex-start;
-                padding: 12px 16px;
-            }
-            .sidebar.collapsed.active .nav-btn i {
-                margin-right: 12px;
-            }
-            .sidebar.collapsed.active .profile-img {
-                width: 64px;
-                height: 64px;
-            }
-        }
-
-        /* Toggle button - FIXED POSITION */
-        .toggle-btn {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            background: #a80050;
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .sidebar.collapsed .toggle-btn {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            transform: translateX(0);
-        }
-
-        .toggle-btn:hover {
-            background: #84003d;
-            transform: scale(1.1);
-        }
-
-        /* Navigation buttons */
-        .nav-btn {
-            position: relative;
-            width: 100%;
-            text-align: left;
-            padding: 12px 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            margin-bottom: 4px;
-            background: none;
-            border: none;
-            color: inherit;
-            font-family: inherit;
-            cursor: pointer;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-btn.active {
-            background: rgba(168, 0, 80, 0.3);
-            border-left: 3px solid #a80050;
-        }
-
-        .nav-btn i {
-            margin-right: 12px;
-            font-size: 1.1rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        .sidebar.collapsed .nav-btn i {
-            margin: 0;
-            width: auto;
-        }
-
-        /* Page transitions */
-        .page-section {
-            display: none;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .page-section.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .page-section.exiting {
-            animation: fadeOut 0.3s ease forwards;
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-
-        /* Content reveal animation */
-        .content-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .content-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero section */
-        .hero-section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #0f172a 0%, #350018 50%, #0f172a 100%);
-            padding-top: 80px;
-        }
-
-        .dark .hero-section {
-            background: linear-gradient(135deg, #0f172a 0%, #350018 50%, #0f172a 100%);
-        }
-
-        /* Stats card styling */
-        .stats-card {
-            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
-            transition: all 0.3s ease;
-        }
-
-        .dark .stats-card {
-            background: linear-gradient(135deg, #350018 0%, #4c0023 100%);
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(168, 0, 80, 0.1);
-        }
-
-        /* Award card styling */
-        .award-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid #a80050;
-        }
-
-        .award-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
-        }
-
-        /* Publication card styling */
-        .publication-card {
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .publication-card:hover {
-            transform: translateY(-3px);
-            border-bottom-color: #a80050;
-            box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
-        }
-
-        /* Social Media Button Styles */
-        .social-btn {
-            position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-btn:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .social-btn::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: currentColor;
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .social-btn:hover::after {
-            width: 70%;
-        }
-
-        .social-btn i {
-            transition: transform 0.3s ease;
-        }
-
-        .social-btn:hover i {
-            transform: scale(1.1);
-        }
-
-        /* Timeline styling */
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #a80050;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 17px;
-            width: 2px;
-            height: calc(100% + 13px);
-            background: #a80050;
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        /* Skill bar styling */
-        .skill-bar {
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .dark .skill-bar {
-            background: #374151;
-        }
-
-        .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, #a80050, #84003d);
-            border-radius: 4px;
-        }
-
-        /* Updated styles for new design */
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .page-link {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .content-visibility-auto {
-            content-visibility: auto;
-        }
-
-        .stack-on-mobile {
-            flex-direction: column;
-        }
-
-        @media (min-width: 768px) {
-            .stack-on-mobile {
-                flex-direction: row;
-            }
-        }
-
-        /* Institution logo styling */
-        .institution-logo {
-            transition: all 0.3s ease;
-        }
-
-        .institution-logo:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Featured research card */
-        .featured-card {
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-        }
-
-        .dark .featured-card {
-            border-color: #374151;
-        }
-
-        .featured-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
-            border-color: #a80050;
-        }
-
-        /* Social media button animation */
-        .social-btn-transform {
-            transition: all 0.3s ease;
-        }
-
-        .social-btn-transform:hover {
-            transform: translateY(-3px) scale(1.1);
-        }
-    </style>
+<style>
+    /* Critical CSS for above-the-fold content */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #414545;
+    overflow-x: hidden;
+}
+
+.dark body {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* Optimized animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Sidebar Styles - FIXED TOGGLE POSITION */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    z-index: 50;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, #350018 0%, #1e293b 100%);
+    /* Transparent scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .sidebar-content {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar.collapsed .profile-img {
+    width: 40px;
+    height: 40px;
+    margin: 15px auto 0;
+}
+
+.sidebar.collapsed .profile-img div {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar.collapsed .profile-img img {
+    width: 36px;
+    height: 36px;
+}
+
+.sidebar.collapsed .toggle-btn {
+    right: 10px;
+    top: 10px;
+    transform: translateX(0) !important;
+}
+
+.sidebar.collapsed .nav-text {
+    display: none;
+}
+
+.sidebar.collapsed .nav-btn {
+    justify-content: center;
+    padding: 12px 0;
+}
+
+.sidebar.collapsed .nav-btn i {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.sidebar.collapsed .border-b {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Profile Section */
+.sidebar .pt-12 {
+    padding-top: 3rem;
+    transition: padding 0.3s ease;
+}
+
+.sidebar.collapsed .pt-12 {
+    padding-top: 3rem;
+    padding-bottom: 0;
+}
+
+.main-content {
+    margin-left: 280px;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Enable scrolling */
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.sidebar.collapsed ~ .main-content {
+    margin-left: 70px;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0 !important;
+        overflow-y: visible;
+        max-height: none;
+    }
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+    .sidebar.collapsed.active {
+        transform: translateX(0);
+        width: 280px;
+    }
+    .sidebar.collapsed.active .sidebar-content {
+        opacity: 1;
+        pointer-events: all;
+        height: auto;
+        overflow: visible;
+    }
+    .sidebar.collapsed.active .nav-text {
+        display: inline;
+    }
+    .sidebar.collapsed.active .nav-btn {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+    .sidebar.collapsed.active .nav-btn i {
+        margin-right: 12px;
+    }
+    .sidebar.collapsed.active .profile-img {
+        width: 64px;
+        height: 64px;
+        margin: 15px auto 1rem;
+    }
+}
+
+/* Toggle button - FIXED POSITION */
+.toggle-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: #a80050;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar.collapsed .toggle-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: translateX(0);
+}
+
+.toggle-btn:hover {
+    background: #84003d;
+    transform: scale(1.1);
+}
+
+/* Navigation buttons */
+.nav-btn {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.active {
+    background: rgba(168, 0, 80, 0.3);
+    border-left: 3px solid #a80050;
+}
+
+.nav-btn i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar.collapsed .nav-btn i {
+    margin: 0;
+    width: auto;
+}
+
+/* Page transitions */
+.page-section {
+    display: none;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+.page-section.exiting {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Loading overlay */
+.page-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dark .page-loading {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.page-loading.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #a80050;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Content reveal animation */
+.content-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.content-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #350018 50%, #0f172a 100%);
+    padding-top: 80px;
+}
+
+.dark .hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #350018 50%, #0f172a 100%);
+}
+
+/* Stats card styling */
+.stats-card {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+    transition: all 0.3s ease;
+}
+
+.dark .stats-card {
+    background: linear-gradient(135deg, #350018 0%, #4c0023 100%);
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(168, 0, 80, 0.1);
+}
+
+/* Award card styling */
+.award-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid #a80050;
+}
+
+.award-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
+}
+
+/* Publication card styling */
+.publication-card {
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.publication-card:hover {
+    transform: translateY(-3px);
+    border-bottom-color: #a80050;
+    box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
+}
+
+/* Social Media Button Styles */
+.social-btn {
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: currentColor;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.social-btn:hover::after {
+    width: 70%;
+}
+
+.social-btn i {
+    transition: transform 0.3s ease;
+}
+
+.social-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* Timeline styling */
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #a80050;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 17px;
+    width: 2px;
+    height: calc(100% + 13px);
+    background: #a80050;
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
+
+/* Skill bar styling */
+.skill-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dark .skill-bar {
+    background: #374151;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, #a80050, #84003d);
+    border-radius: 4px;
+}
+
+/* Updated styles for new design */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.page-link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.content-visibility-auto {
+    content-visibility: auto;
+}
+
+.stack-on-mobile {
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .stack-on-mobile {
+        flex-direction: row;
+    }
+}
+
+/* Institution logo styling */
+.institution-logo {
+    transition: all 0.3s ease;
+}
+
+.institution-logo:hover {
+    transform: translateY(-5px);
+}
+
+/* Featured research card */
+.featured-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.dark .featured-card {
+    border-color: #374151;
+}
+
+.featured-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
+    border-color: #a80050;
+}
+
+/* Social media button animation */
+.social-btn-transform {
+    transition: all 0.3s ease;
+}
+
+.social-btn-transform:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Publications table styling */
+.publications-table, .collaborators-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.publications-table th, 
+.publications-table td,
+.collaborators-table th,
+.collaborators-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .publications-table th,
+.dark .publications-table td,
+.dark .collaborators-table th,
+.dark .collaborators-table td {
+    border-bottom: 1px solid #374151;
+}
+
+.publications-table th,
+.collaborators-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.dark .publications-table th,
+.dark .collaborators-table th {
+    background-color: #1f2937;
+    color: #d1d5db;
+}
+
+.publications-table tr:hover,
+.collaborators-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.dark .publications-table tr:hover,
+.dark .collaborators-table tr:hover {
+    background-color: #374151;
+}
+
+/* Filter buttons */
+.filter-btn.active {
+    background-color: #a80050 !important;
+    color: white !important;
+}
+
+/* Collaborator card */
+.collaborator-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.dark .collaborator-card {
+    border-color: #374151;
+}
+
+.collaborator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
+    border-color: #a80050;
+}
+
+/* Gallery grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(168, 0, 80, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Footer styling */
+.social-link {
+    transition: all 0.3s ease;
+}
+
+.footer-link-hover {
+    position: relative;
+}
+
+.footer-link-hover::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: #a80050;
+    transition: width 0.3s ease;
+}
+
+.footer-link-hover:hover::before {
+    width: 100%;
+}
+
+/* Back to top button */
+#back-to-top {
+    transition: all 0.3s ease;
+}
+
+/* No print */
+.no-print {
+    @media print {
+        display: none !important;
+    }
+}
+
+/* Custom Scrollbar Styles */
+
+/* Transparent Sidebar Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 4px; /* Thin width */
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+/* Show scrollbar on hover */
+.sidebar:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Dark theme for sidebar scrollbar */
+.dark .sidebar::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.dark .sidebar:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .sidebar:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Themed Main Content Scrollbar */
+.main-content::-webkit-scrollbar {
+    width: 6px; /* Thin width */
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 3px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #a80050;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+    background: #84003d;
+}
+
+/* Dark theme for main content scrollbar */
+.dark .main-content::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.dark .main-content::-webkit-scrollbar-thumb {
+    background: #a80050;
+}
+
+.dark .main-content::-webkit-scrollbar-thumb:hover {
+    background: #c2185b;
+}
+
+/* Firefox scrollbar styling */
+/* Transparent for sidebar */
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.sidebar:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.dark .sidebar:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Themed for main content */
+.main-content {
+    scrollbar-width: thin;
+    scrollbar-color: #a80050 #f5f5f5;
+}
+
+.dark .main-content {
+    scrollbar-color: #a80050 #1e293b;
+}
+</style>
 </head>
+
 <body class="font-inter bg-white text-gray-800 dark:bg-academic-dark dark:text-gray-200">
     <!-- Loading Overlay -->
     <div id="pageLoading" class="page-loading">
         <div class="loading-spinner"></div>
     </div>
-    
+
     <!-- Mobile Menu Button -->
-    <button id="mobileMenuButton" class="fixed top-4 left-4 z-50 lg:hidden p-3 bg-primary-500 text-white rounded-lg shadow-lg no-print">
+    <button id="mobileMenuButton"
+        class="fixed top-4 left-4 z-50 lg:hidden p-3 bg-primary-500 text-white rounded-lg shadow-lg no-print">
         <i class="fas fa-bars"></i>
     </button>
-    
+
     <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 p-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full shadow-lg no-print">
+    <button id="darkModeToggle"
+        class="fixed top-4 right-4 z-50 p-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full shadow-lg no-print">
         <i class="fas fa-moon" id="darkModeIcon"></i>
     </button>
-    
+
     <!-- Sidebar -->
     <aside class="sidebar text-white no-print">
         <!-- Toggle Button -->
         <button id="sidebarToggle" class="toggle-btn">
             <i class="fas fa-chevron-left" id="toggleIcon"></i>
         </button>
-        
+
         <!-- Profile Section -->
-        <div class="pt-6 pb-4 text-center border-b border-white/10">
-    
-            <div class="sidebar-content px-2">
+        <div class="pt-12 pb-4 text-center border-b border-white/10">
+            <div class="profile-img relative w-12 h-12 mx-auto mb-0">
+                <div
+                    class="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center shadow-lg">
+                    <img src="12.png" alt="professor logo" class="w-10 h-10 rounded-full object-cover">
+                </div>
+            </div>
+            <div class="sidebar-content px-2 transition-opacity duration-300">
                 <h1 class="text-sm font-bold mb-1 truncate">Dr. M. M. Sharif</h1>
                 <p class="text-primary-200 text-xs mb-3">Asst. Professor</p>
-                
-                <!-- Quick Stats -->
-                <div class="grid grid-cols-3 gap-1 mb-3">
-                    <div class="bg-white/10 p-1 rounded text-xs">
-                        <div class="font-bold">16+</div>
-                        <div class="text-primary-200">Yrs</div>
-                    </div>
-                    <div class="bg-white/10 p-1 rounded text-xs">
-                        <div class="font-bold">40+</div>
-                        <div class="text-primary-200">Pubs</div>
-                    </div>
-                    <div class="bg-white/10 p-1 rounded text-xs">
-                        <div class="font-bold">PhD</div>
-                        <div class="text-primary-200">UK</div>
-                    </div>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-3 mb-3">
+                    <a href="https://www.linkedin.com/in/muazzam-sharif-40754728" target="_blank"
+                        class="social-btn w-7 h-7 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                        <i class="fab fa-linkedin-in text-xs"></i>
+                    </a>
+                    <a href="mailto:sharifmuazzam@gmail.com"
+                        class="social-btn w-7 h-7 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                        <i class="fas fa-envelope text-xs"></i>
+                    </a>
+                    <a href="https://www.instagram.com/muazzamsharif?igsh=ZW42ZHFqOHU4bWtl" target="_blank"
+                        class="social-btn w-7 h-7 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                        <i class="fab fa-instagram text-xs"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        
+
         <!-- Navigation -->
         <nav class="p-3">
             <ul class="space-y-1">
@@ -567,6 +889,12 @@
                     <button data-page="about" class="nav-btn text-sm">
                         <i class="fas fa-user"></i>
                         <span class="nav-text">About</span>
+                    </button>
+                </li>
+                <li>
+                    <button data-page="research" class="nav-btn text-sm">
+                        <i class="fas fa-search"></i>
+                        <span class="nav-text">Research Focus</span>
                     </button>
                 </li>
                 <li>
@@ -600,23 +928,9 @@
                     </button>
                 </li>
             </ul>
-            
-            <!-- Social Links -->
-            <div class="sidebar-content mt-4 pt-3 border-t border-white/10">
-                <div class="flex justify-center space-x-2">
-                    <a href="https://www.linkedin.com/in/muazzam-sharif-40754728" target="_blank" 
-                       class="social-btn w-7 h-7 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-                        <i class="fab fa-linkedin-in text-xs"></i>
-                    </a>
-                    <a href="mailto:sharifmuazzam@gmail.com" 
-                       class="social-btn w-7 h-7 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-                        <i class="fas fa-envelope text-xs"></i>
-                    </a>
-                </div>
-            </div>
         </nav>
     </aside>
-    
+
     <!-- Main Content -->
     <main class="main-content">
         <!-- Home Page -->
@@ -627,8 +941,9 @@
                 <div class="container mx-auto px-4 sm:px-6 z-10">
                     <div class="max-w-4xl mx-auto text-center text-white animate-fade-in">
                         <!-- Profile Image -->
-                        <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 sm:mb-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/20">
-                            <img src="122.png" alt="Dr. Mohammad Muazzam Sharif"
+                        <div
+                            class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 sm:mb-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/20">
+                            <img src="12.png" alt="Dr. Mohammad Muazzam Sharif"
                                 class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover" loading="eager" width="128"
                                 height="128">
                         </div>
@@ -646,18 +961,18 @@
                         </p>
 
                         <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                            <a href="#publications" data-page="publications"
-                                class="page-link bg-white/20 hover:bg-white/30 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors backdrop-blur-sm border border-white/20 inline-block text-center">
+                            <button data-page="publications"
+                                class="page-nav bg-white/20 hover:bg-white/30 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors backdrop-blur-sm border border-white/20 inline-block text-center">
                                 View Publications
-                            </a>
-                            <a href="#research" data-page="research"
-                                class="page-link bg-white/20 hover:bg-white/30 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors backdrop-blur-sm border border-white/20 inline-block text-center">
+                            </button>
+                            <button data-page="research"
+                                class="page-nav bg-white/20 hover:bg-white/30 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors backdrop-blur-sm border border-white/20 inline-block text-center">
                                 Research Focus
-                            </a>
-                            <a href="#contact" data-page="contact"
-                                class="page-link bg-white text-[#a80050] hover:bg-gray-50 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors inline-block text-center">
+                            </button>
+                            <button data-page="contact"
+                                class="page-nav bg-white text-[#a80050] hover:bg-gray-50 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors inline-block text-center">
                                 Contact Me
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -666,37 +981,49 @@
             <!-- Quick Stats Section -->
             <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
                 <div class="max-w-6xl mx-auto">
-                    <div class="bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
+                            <div
+                                class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
                                 40+</div>
-                            <h3 class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
+                            <h3
+                                class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
                                 Publications</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Research Papers & Journals</p>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Research Papers & Journals
+                            </p>
                         </div>
 
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
+                            <div
+                                class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
                                 16+</div>
-                            <h3 class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
+                            <h3
+                                class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
                                 Years Experience</h3>
                             <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Teaching & Research</p>
                         </div>
 
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
+                            <div
+                                class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
                                 PhD</div>
-                            <h3 class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
+                            <h3
+                                class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
                                 UK Graduate</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of Southampton</p>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of Southampton
+                            </p>
                         </div>
 
                         <div class="text-center">
-                            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
+                            <div
+                                class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#a80050] dark:text-primary-400 mb-2">
                                 Fulbright</div>
-                            <h3 class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
+                            <h3
+                                class="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#414545] dark:text-slate-200">
                                 Alumnus</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of Georgia, USA</p>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of Georgia, USA
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -705,48 +1032,57 @@
             <!-- Institution Logos Section -->
             <div class="py-8 sm:py-12 bg-gray-50 dark:bg-slate-900">
                 <div class="container mx-auto px-4 sm:px-6">
-                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8 text-[#414545] dark:text-slate-200">
+                    <h2
+                        class="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8 text-[#414545] dark:text-slate-200">
                         Affiliated Institutions</h2>
 
                     <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
                         <!-- Abdul Wali Khan University -->
                         <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
                                 <div class="text-primary-600 dark:text-primary-400 text-2xl sm:text-3xl">
                                     <i class="fas fa-university"></i>
                                 </div>
                             </div>
-                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">Abdul Wali Khan University</p>
+                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">Abdul Wali
+                                Khan University</p>
                         </div>
 
                         <!-- University of Southampton -->
                         <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
                                 <div class="text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl">
                                     <i class="fas fa-graduation-cap"></i>
                                 </div>
                             </div>
-                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">University of Southampton</p>
+                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">University
+                                of Southampton</p>
                         </div>
 
                         <!-- University of Georgia -->
                         <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
                                 <div class="text-red-600 dark:text-red-400 text-2xl sm:text-3xl">
                                     <i class="fas fa-flag-usa"></i>
                                 </div>
                             </div>
-                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">University of Georgia</p>
+                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">University
+                                of Georgia</p>
                         </div>
 
                         <!-- Fulbright Program -->
                         <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white dark:bg-slate-800 rounded-xl p-2 flex items-center justify-center shadow-sm institution-logo">
                                 <div class="text-yellow-600 dark:text-yellow-400 text-2xl sm:text-3xl">
                                     <i class="fas fa-award"></i>
                                 </div>
                             </div>
-                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">Fulbright Program</p>
+                            <p class="mt-2 text-xs sm:text-sm text-center text-gray-600 dark:text-slate-400">Fulbright
+                                Program</p>
                         </div>
                     </div>
                 </div>
@@ -755,19 +1091,27 @@
             <!-- Featured Research Section -->
             <div class="py-12 sm:py-16 bg-gray-50 dark:bg-slate-900">
                 <div class="container mx-auto px-4 sm:px-6">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                    <h2
+                        class="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
                         Featured Publications</h2>
-                    <p class="text-base sm:text-lg text-center mb-8 sm:mb-12 text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    <p
+                        class="text-base sm:text-lg text-center mb-8 sm:mb-12 text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
                         Highlighted research in literary studies and Shakespearean research</p>
 
                     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                        <div class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-slate-700 featured-card">
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-slate-700 featured-card">
                             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
-                                <h3 class="text-lg sm:text-xl font-semibold text-[#414545] dark:text-slate-200 mb-2 sm:mb-0">
+                                <h3
+                                    class="text-lg sm:text-xl font-semibold text-[#414545] dark:text-slate-200 mb-2 sm:mb-0">
                                     Cultural Echoes: Exploring Pashtunwali Resonance in Lorca's Blood Wedding</h3>
-                                <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium px-2 py-0.5 rounded self-start mt-2 sm:mt-0">Journal of Applied Linguistics and TESOL</span>
+                                <span
+                                    class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium px-2 py-0.5 rounded self-start mt-2 sm:mt-0">Journal
+                                    of Applied Linguistics and TESOL</span>
                             </div>
-                            <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400 mb-3 sm:mb-4">Cross-cultural analysis exploring Pashtunwali elements in Federico García Lorca's tragedy, examining universal themes of honor, family, and tradition.</p>
+                            <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400 mb-3 sm:mb-4">
+                                Cross-cultural analysis exploring Pashtunwali elements in Federico García Lorca's
+                                tragedy, examining universal themes of honor, family, and tradition.</p>
                             <div class="flex items-center text-gray-500 dark:text-slate-500 text-xs sm:text-sm">
                                 <i class="far fa-calendar mr-2"></i>
                                 <span>2025</span>
@@ -776,13 +1120,19 @@
                             </div>
                         </div>
 
-                        <div class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-slate-700 featured-card">
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-slate-700 featured-card">
                             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
-                                <h3 class="text-lg sm:text-xl font-semibold text-[#414545] dark:text-slate-200 mb-2 sm:mb-0">
+                                <h3
+                                    class="text-lg sm:text-xl font-semibold text-[#414545] dark:text-slate-200 mb-2 sm:mb-0">
                                     Global Shakespeare: An Appraisal of Shakespeare and his Plays in Pakistan</h3>
-                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2 py-0.5 rounded self-start mt-2 sm:mt-0">International Journal of Early Childhood Special Education</span>
+                                <span
+                                    class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2 py-0.5 rounded self-start mt-2 sm:mt-0">International
+                                    Journal of Early Childhood Special Education</span>
                             </div>
-                            <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400 mb-3 sm:mb-4">Comprehensive study examining the reception, adaptation, and interpretation of Shakespeare's works within the Pakistani cultural and educational context.</p>
+                            <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400 mb-3 sm:mb-4">Comprehensive
+                                study examining the reception, adaptation, and interpretation of Shakespeare's works
+                                within the Pakistani cultural and educational context.</p>
                             <div class="flex items-center text-gray-500 dark:text-slate-500 text-xs sm:text-sm">
                                 <i class="far fa-calendar mr-2"></i>
                                 <span>2022</span>
@@ -793,28 +1143,31 @@
                     </div>
 
                     <div class="text-center mt-8 sm:mt-12">
-                        <a href="#publications" data-page="publications"
-                            class="page-link inline-flex items-center text-[#a80050] dark:text-primary-400 hover:text-[#84003d] dark:hover:text-primary-300 font-medium text-sm sm:text-base">
+                        <button data-page="publications"
+                            class="page-nav inline-flex items-center text-[#a80050] dark:text-primary-400 hover:text-[#84003d] dark:hover:text-primary-300 font-medium text-sm sm:text-base">
                             View All 40+ Publications
                             <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- About Page -->
         <section id="about" class="page-section content-visibility-auto">
             <div class="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-white dark:bg-slate-900">
                 <div class="container mx-auto px-4 sm:px-6">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
+                    <h2
+                        class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
                         About Me</h2>
 
-                    <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 max-w-6xl mx-auto stack-on-mobile">
+                    <div
+                        class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 max-w-6xl mx-auto stack-on-mobile">
                         <div class="w-full md:w-1/3 flex flex-col items-center">
                             <div class="relative mb-6">
-                                <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-[#a80050] to-[#84003d] flex items-center justify-center shadow-xl">
-                                    <img src="122.png" alt="Dr. Mohammad Muazzam Sharif"
+                                <div
+                                    class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-[#a80050] to-[#84003d] flex items-center justify-center shadow-xl">
+                                    <img src="12.png" alt="Dr. Mohammad Muazzam Sharif"
                                         class="w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full object-cover"
                                         width="240" height="240">
                                 </div>
@@ -858,16 +1211,29 @@
                         </div>
 
                         <div class="w-full md:w-2/3">
-                            <p class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-4 sm:mb-6 text-justify">
-                                I am Dr. Mohammad Muazzam Sharif, an <span class="font-semibold text-[#a80050] dark:text-primary-400">Assistant Professor of English</span> with expertise in Pakistani literature, Shakespearean studies, and postcolonial literature. My research bridges traditional literary scholarship with contemporary critical approaches.
+                            <p
+                                class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-4 sm:mb-6 text-justify">
+                                I am Dr. Mohammad Muazzam Sharif, an <span
+                                    class="font-semibold text-[#a80050] dark:text-primary-400">Assistant Professor of
+                                    English</span> with expertise in Pakistani literature, Shakespearean studies, and
+                                postcolonial literature. My research bridges traditional literary scholarship with
+                                contemporary critical approaches.
                             </p>
 
-                            <p class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-4 sm:mb-6 text-justify">
-                                As a <span class="font-semibold text-[#a80050] dark:text-primary-400">Fulbright alumnus</span> and PhD graduate from the University of Southampton, UK, I bring international perspectives to my teaching and research. My work focuses on cross-cultural literary analysis, Shakespearean adaptations in South Asia, and the development of Pakistani literature in English.
+                            <p
+                                class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-4 sm:mb-6 text-justify">
+                                As a <span class="font-semibold text-[#a80050] dark:text-primary-400">Fulbright
+                                    alumnus</span> and PhD graduate from the University of Southampton, UK, I bring
+                                international perspectives to my teaching and research. My work focuses on
+                                cross-cultural literary analysis, Shakespearean adaptations in South Asia, and the
+                                development of Pakistani literature in English.
                             </p>
 
-                            <p class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-6 sm:mb-8 text-justify">
-                                With over 40 publications in national and international journals, I actively contribute to literary scholarship while mentoring the next generation of researchers and scholars at Abdul Wali Khan University Mardan.
+                            <p
+                                class="text-base sm:text-lg text-[#414545] dark:text-slate-300 mb-6 sm:mb-8 text-justify">
+                                With over 40 publications in national and international journals, I actively contribute
+                                to literary scholarship while mentoring the next generation of researchers and scholars
+                                at Abdul Wali Khan University Mardan.
                             </p>
 
                             <!-- Quick Info Cards -->
@@ -877,7 +1243,8 @@
                                         <i class="fas fa-graduation-cap text-[#a80050] dark:text-primary-400 mr-3"></i>
                                         <h4 class="font-semibold text-[#414545] dark:text-slate-200">Education</h4>
                                     </div>
-                                    <p class="text-sm text-gray-600 dark:text-slate-400">PhD in English from University of Southampton, UK (2013-2017)</p>
+                                    <p class="text-sm text-gray-600 dark:text-slate-400">PhD in English from University
+                                        of Southampton, UK (2013-2017)</p>
                                 </div>
 
                                 <div class="bg-primary-50 dark:bg-slate-800 rounded-lg p-4">
@@ -885,7 +1252,8 @@
                                         <i class="fas fa-briefcase text-[#a80050] dark:text-primary-400 mr-3"></i>
                                         <h4 class="font-semibold text-[#414545] dark:text-slate-200">Current Role</h4>
                                     </div>
-                                    <p class="text-sm text-gray-600 dark:text-slate-400">Assistant Professor at Abdul Wali Khan University Mardan</p>
+                                    <p class="text-sm text-gray-600 dark:text-slate-400">Assistant Professor at Abdul
+                                        Wali Khan University Mardan</p>
                                 </div>
                             </div>
 
@@ -916,35 +1284,50 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
                             <!-- Education -->
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
+                                <h3
+                                    class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
                                     Education</h3>
                                 <div class="space-y-6 sm:space-y-8">
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             Doctor of Philosophy (PhD), English Literature</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of Southampton, United Kingdom</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of
+                                            Southampton, United Kingdom</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2013–2017</p>
-                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Specialization in Shakespearean Studies and Postcolonial Literature</p>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">
+                                            Specialization in Shakespearean Studies and Postcolonial Literature</p>
                                     </div>
 
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             MA English</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of Peshawar, Pakistan</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of
+                                            Peshawar, Pakistan</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2002–2003</p>
-                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Department of English and Applied Linguistics</p>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Department
+                                            of English and Applied Linguistics</p>
                                     </div>
 
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             BA English</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Edwardes College Peshawar</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Edwardes
+                                            College Peshawar</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2000–2001</p>
                                     </div>
                                 </div>
@@ -952,36 +1335,52 @@
 
                             <!-- Experience -->
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
+                                <h3
+                                    class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-[#414545] dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">
                                     Professional Experience</h3>
                                 <div class="space-y-6 sm:space-y-8">
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             Assistant Professor of English</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Abdul Wali Khan University Mardan</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Abdul Wali
+                                            Khan University Mardan</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2022–Present</p>
-                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Teaching Pakistani literature, modern fiction, contemporary poetry</p>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Teaching
+                                            Pakistani literature, modern fiction, contemporary poetry</p>
                                     </div>
 
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             Lecturer in English</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Abdul Wali Khan University Mardan</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">Abdul Wali
+                                            Khan University Mardan</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2013–2022</p>
                                     </div>
 
-                                    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
-                                        <div class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
+                                    <div
+                                        class="relative pl-6 sm:pl-8 border-l-2 border-[#a80050] dark:border-primary-400">
+                                        <div
+                                            class="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#a80050] dark:bg-primary-400">
                                         </div>
-                                        <h4 class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
+                                        <h4
+                                            class="text-base sm:text-lg font-semibold text-[#414545] dark:text-slate-200">
                                             Fulbright FLTA Program</h4>
-                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of Georgia, Athens, USA</p>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">University of
+                                            Georgia, Athens, USA</p>
                                         <p class="text-xs sm:text-sm text-gray-500 dark:text-slate-500">2009–2010</p>
-                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Foreign Language Teaching Assistant - Language Instructor and Cultural Ambassador</p>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mt-1">Foreign
+                                            Language Teaching Assistant - Language Instructor and Cultural Ambassador
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -990,31 +1389,39 @@
 
                     <!-- Skills Section -->
                     <div class="max-w-6xl mx-auto mt-12 sm:mt-16">
-                        <h3 class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center text-[#414545] dark:text-slate-200">
+                        <h3
+                            class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center text-[#414545] dark:text-slate-200">
                             Core Expertise</h3>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                             <!-- Literary Studies -->
-                            <div class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
                                     <i class="fas fa-book text-base sm:text-lg"></i>
                                 </div>
-                                <h4 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                                <h4
+                                    class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
                                     Literary Studies</h4>
                                 <ul class="space-y-2">
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Shakespearean Studies
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Postcolonial Literature
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Pakistani Literature in English
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Comparative Literature
                                     </li>
@@ -1022,26 +1429,33 @@
                             </div>
 
                             <!-- Research Methodology -->
-                            <div class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
                                     <i class="fas fa-search text-base sm:text-lg"></i>
                                 </div>
-                                <h4 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                                <h4
+                                    class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
                                     Research & Teaching</h4>
                                 <ul class="space-y-2">
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Academic Research Supervision
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Critical Theory Application
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Cross-Cultural Analysis
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Literary Criticism
                                     </li>
@@ -1049,26 +1463,33 @@
                             </div>
 
                             <!-- Other Competencies -->
-                            <div class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-slate-700">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-900 text-[#a80050] dark:text-primary-400 flex items-center justify-center mb-3 sm:mb-4">
                                     <i class="fas fa-tasks text-base sm:text-lg"></i>
                                 </div>
-                                <h4 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                                <h4
+                                    class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
                                     Other Competencies</h4>
                                 <ul class="space-y-2">
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Academic Writing (40+ Publications)
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Conference Organization
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Research Project Management
                                     </li>
-                                    <li class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                    <li
+                                        class="flex items-center text-sm sm:text-base text-gray-600 dark:text-slate-400">
                                         <i class="fas fa-circle text-[#a80050] dark:text-primary-400 text-xs mr-2"></i>
                                         Multilingual Communication
                                     </li>
@@ -1079,15 +1500,17 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Research Focus Page -->
         <section id="research" class="page-section">
             <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
                 <div class="container mx-auto px-4 page-content">
                     <!-- Page Header -->
                     <div class="text-center mb-8 md:mb-12">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 content-reveal">Research Focus</h1>
-                        <div class="w-24 h-1 bg-primary-500 mx-auto content-reveal" style="transition-delay: 0.1s"></div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 content-reveal">
+                            Research Focus</h1>
+                        <div class="w-24 h-1 bg-primary-500 mx-auto content-reveal" style="transition-delay: 0.1s">
+                        </div>
                     </div>
 
                     <div class="max-w-6xl mx-auto">
@@ -1105,11 +1528,13 @@
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-book-open text-primary-500 text-xl mb-2"></i>
-                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Modern Fiction and Non-Fiction</h3>
+                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Modern Fiction and
+                                        Non-Fiction</h3>
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-balance-scale text-primary-500 text-xl mb-2"></i>
-                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Comparative Studies and Analyses</h3>
+                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Comparative Studies and
+                                        Analyses</h3>
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-globe-asia text-primary-500 text-xl mb-2"></i>
@@ -1117,7 +1542,8 @@
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-film text-primary-500 text-xl mb-2"></i>
-                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Film/Documentary/Script Studies</h3>
+                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Film/Documentary/Script
+                                        Studies</h3>
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-pen-fancy text-primary-500 text-xl mb-2"></i>
@@ -1125,11 +1551,13 @@
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-flag text-primary-500 text-xl mb-2"></i>
-                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Pakistani Writings in English</h3>
+                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Pakistani Writings in
+                                        English</h3>
                                 </div>
                                 <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border-l-4 border-primary-500">
                                     <i class="fas fa-chalkboard-teacher text-primary-500 text-xl mb-2"></i>
-                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">English Language Teaching</h3>
+                                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">English Language Teaching
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -1138,13 +1566,27 @@
                         <div class="mb-12 content-reveal" style="transition-delay: 0.1s">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Digital Skills</h2>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Microsoft Office</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Microsoft PowerPoint</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google Forms</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google Slides</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google Drive</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google Docs</span>
-                                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google Sites</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Microsoft
+                                    Office</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Microsoft
+                                    PowerPoint</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google
+                                    Forms</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google
+                                    Slides</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google
+                                    Drive</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google
+                                    Docs</span>
+                                <span
+                                    class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full">Google
+                                    Sites</span>
                             </div>
                         </div>
 
@@ -1153,10 +1595,12 @@
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Research Supervision</h2>
                             <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
                                 <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                    Successfully supervised <span class="font-bold text-primary-600">nineteen MPhil research projects</span> (completed) with several more currently in progress.
+                                    Successfully supervised <span class="font-bold text-primary-600">nineteen MPhil
+                                        research projects</span> (completed) with several more currently in progress.
                                 </p>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    Extensive experience in guiding postgraduate research across various areas of English literature, literary theory, and applied linguistics.
+                                    Extensive experience in guiding postgraduate research across various areas of
+                                    English literature, literary theory, and applied linguistics.
                                 </p>
                             </div>
                         </div>
@@ -1164,111 +1608,116 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Publications Page -->
-        <section id="publications" class="page-section">
-            <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
-                <div class="container mx-auto px-4 page-content">
-                    <!-- Page Header -->
-                    <div class="text-center mb-8 md:mb-12">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 content-reveal">Publications</h1>
-                        <div class="w-24 h-1 bg-primary-500 mx-auto content-reveal" style="transition-delay: 0.1s"></div>
+        <section id="publications" class="page-section content-visibility-auto">
+            <div class="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-white dark:bg-slate-900">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <h2
+                        class="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                        Publications</h2>
+                    <p
+                        class="text-base sm:text-lg text-center mb-8 sm:mb-12 text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+                        40+ research contributions in national and international journals</p>
+
+                    <!-- Publications Filters -->
+                    <div class="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
+                        <button
+                            class="filter-btn active px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#a80050] text-white text-xs sm:text-sm font-medium"
+                            data-filter="all">All Publications</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="2025">2025</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="2024">2024</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="2023">2023</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="2022">2022</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="q1">Q1 Journals</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="literature">Literature</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="shakespeare">Shakespeare</button>
+                        <button
+                            class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 text-xs sm:text-sm font-medium"
+                            data-filter="conference">Conferences</button>
                     </div>
 
-                    <div class="max-w-6xl mx-auto">
-                        <div class="mb-8 content-reveal">
-                            <p class="text-lg text-gray-700 dark:text-gray-300 text-center mb-8">
-                                Author of more than 40 research papers featured in national and international journals.
-                            </p>
+                    <!-- Publications Table -->
+                    <div
+                        class="publications-table-container bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 dark:border-slate-700">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                <h3 class="text-lg font-semibold text-[#414545] dark:text-slate-200">Research
+                                    Publications</h3>
+                                <div class="text-sm text-gray-600 dark:text-slate-400 flex items-center gap-2">
+                                    <span>Total: <span id="publication-count" class="font-medium">40+</span></span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Publications List -->
-                        <div class="space-y-6 content-reveal" style="transition-delay: 0.1s">
-                            <!-- 2025 Publications -->
-                            <div class="mb-8">
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">2025</h2>
-                                <div class="space-y-4">
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">CULTURAL ECHOES: EXPLORING PASHTUNWALI RESONANCE IN LORCA'S BLOOD WEDDING</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> JOURNAL OF APPLIED LINGUISTICS AND TESOL</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 8 (4), 83-96</p>
-                                    </div>
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">The Narcissistic Mirror: A Post Modern Reading of "Brick Lane"</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> Journal of Asian Development Studies</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 14 (3), 618-631</p>
-                                    </div>
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">Identity Crisis: The Fragmented Self in Elif Shafak's Saint of Incipient Insanities</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> Journal of Asian Development Studies</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 14 (3), 610-617</p>
-                                    </div>
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">Adaptation Vs Authenticity: Exploring the Consequences of Changing and Unchanging Human Nature on Individuals and Family Ties in Mother Courage and Her Children</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> Pakistan Journal of Humanities and Social Sciences</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 13(2), 527-533</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="overflow-x-auto">
+                            <table class="publications-table">
+                                <thead>
+                                    <tr>
+                                        <th class="w-20 sm:w-28">Year</th>
+                                        <th>Title</th>
+                                        <th class="w-48 sm:w-64">Journal/Conference</th>
+                                        <th class="w-32 sm:w-40">Type</th>
+                                        <th class="w-32 sm:w-40">Volume/Pages</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="publications-table-body">
+                                    <!-- Publications will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
 
-                            <!-- 2024 Publications -->
-                            <div class="mb-8">
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">2024</h2>
-                                <div class="space-y-4">
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">Mental Objectification; Unpacking the Protagonist's Transformative Journey in the Patience Stone</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> JOURNAL OF APPLIED LINGUISTICS AND TESOL</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 7 (4), 1986-1992</p>
-                                    </div>
-                                </div>
+                        <!-- Table Footer -->
+                        <div
+                            class="p-4 border-t border-gray-200 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="text-sm text-gray-600 dark:text-slate-400">
+                                Showing <span id="showing-count">10</span> of <span id="total-count">40+</span>
+                                publications
                             </div>
-
-                            <!-- 2023 Publications -->
-                            <div class="mb-8">
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">2023</h2>
-                                <div class="space-y-4">
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">Power Abuse In The Kite Runner: The Foucauldian Perspective</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> Journal of Positive School Psychology</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 7 (2), 739-753</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 2022 Publications -->
-                            <div class="mb-8">
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2">2022</h2>
-                                <div class="space-y-4">
-                                    <div class="publication-card bg-gray-50 dark:bg-gray-900 p-5 rounded-lg">
-                                        <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">Global Shakespeare: An Appraisal of Shakespeare and his Plays in Pakistan</h3>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-2"><span class="font-semibold">Journal:</span> International Journal of Early Childhood Special Education</p>
-                                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">Volume/Issue/Pages:</span> 14(07), 2232-2236</p>
-                                    </div>
-                                    <!-- Add more 2022 publications as needed -->
-                                </div>
-                            </div>
-
-                            <!-- Note about additional publications -->
-                            <div class="mt-8 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
-                                <p class="text-primary-700 dark:text-primary-300 text-center">
-                                    <i class="fas fa-info-circle mr-2"></i>
-                                    The complete list includes 40+ publications spanning from 2010 to 2025. For the full publication list, please contact directly.
-                                </p>
+                            <div class="flex items-center space-x-2">
+                                <button id="prev-btn"
+                                    class="px-3 py-1 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="text-sm text-gray-700 dark:text-slate-300">
+                                    Page <span id="current-page">1</span> of <span id="total-pages">4</span>
+                                </span>
+                                <button id="next-btn"
+                                    class="px-3 py-1 rounded-lg bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-300 dark:hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Awards Page -->
         <section id="awards" class="page-section">
             <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
                 <div class="container mx-auto px-4 page-content">
                     <!-- Page Header -->
                     <div class="text-center mb-8 md:mb-12">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 content-reveal">Awards & Achievements</h1>
-                        <div class="w-24 h-1 bg-primary-500 mx-auto content-reveal" style="transition-delay: 0.1s"></div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 content-reveal">
+                            Awards & Achievements</h1>
+                        <div class="w-24 h-1 bg-primary-500 mx-auto content-reveal" style="transition-delay: 0.1s">
+                        </div>
                     </div>
 
                     <div class="max-w-6xl mx-auto">
@@ -1283,15 +1732,20 @@
                                     <li class="flex items-start">
                                         <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
                                         <div>
-                                            <p class="font-medium text-gray-800 dark:text-gray-200">Overseas PhD Scholarship</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Funded by Abdul Wali Khan University, Mardan (AWKUM), KP, Pakistan, 2013-2017</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">Overseas PhD
+                                                Scholarship</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Funded by Abdul Wali
+                                                Khan University, Mardan (AWKUM), KP, Pakistan, 2013-2017</p>
                                         </div>
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
                                         <div>
-                                            <p class="font-medium text-gray-800 dark:text-gray-200">Fulbright Scholarship</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Foreign Language Teaching Assistant Program, placement at University of Georgia, Athens, GA, USA, 2009-2010</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">Fulbright
+                                                Scholarship</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Foreign Language
+                                                Teaching Assistant Program, placement at University of Georgia, Athens,
+                                                GA, USA, 2009-2010</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -1307,8 +1761,12 @@
                                     <li class="flex items-start">
                                         <i class="fas fa-project-diagram text-primary-500 mt-1 mr-3"></i>
                                         <div>
-                                            <p class="font-medium text-gray-800 dark:text-gray-200">Semester System Training Workshop</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Two-Day Training Workshop for Faculty of Colleges in Khyber Pukhtunkhwa, Kohat University of Science & Technology, KP, Pakistan (Fulbright Alumni Grants for Academic Activities), 2012-2013</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">Semester System
+                                                Training Workshop</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Two-Day Training
+                                                Workshop for Faculty of Colleges in Khyber Pukhtunkhwa, Kohat University
+                                                of Science & Technology, KP, Pakistan (Fulbright Alumni Grants for
+                                                Academic Activities), 2012-2013</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -1325,7 +1783,8 @@
                                         <i class="fas fa-medal text-primary-500 mt-1 mr-3"></i>
                                         <div>
                                             <p class="font-medium text-gray-800 dark:text-gray-200">Gold Medalist</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Edwardes College School, Peshawar, 1997</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Edwardes College School,
+                                                Peshawar, 1997</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -1336,14 +1795,18 @@
                                 <div class="text-4xl text-primary-500 mb-4">
                                     <i class="fas fa-users"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Professional Memberships</h3>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Professional
+                                    Memberships</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start">
                                         <i class="fas fa-user-tie text-primary-500 mt-1 mr-3"></i>
                                         <div>
-                                            <p class="font-medium text-gray-800 dark:text-gray-200">Asian Shakespearean Association</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">CMRC, Southampton, UK</p>
-                                            <a href="https://asianshakespeare.org/" target="_blank" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-sm">https://asianshakespeare.org/</a>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">Asian Shakespearean
+                                                Association</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">CMRC, Southampton, UK
+                                            </p>
+                                            <a href="https://asianshakespeare.org/" target="_blank"
+                                                class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-sm">https://asianshakespeare.org/</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -1352,28 +1815,37 @@
 
                         <!-- Additional Achievements -->
                         <div class="mt-12 content-reveal" style="transition-delay: 0.2s">
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Additional Professional Engagements</h2>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Additional Professional
+                                Engagements</h2>
                             <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
                                 <ul class="space-y-3">
                                     <li class="flex items-start">
                                         <i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Currently working on the shifting and reestablishment of the English Language Lab at the Department of English, Abdul Wali Khan University Mardan</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Currently working on the shifting
+                                            and reestablishment of the English Language Lab at the Department of
+                                            English, Abdul Wali Khan University Mardan</span>
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Editor of KUST: A Newsletter, Kohat University of Science & Technology, KUST, Kohat, 2011-12</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Editor of KUST: A Newsletter,
+                                            Kohat University of Science & Technology, KUST, Kohat, 2011-12</span>
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Focal person and representative of Abdul Wali Khan University Mardan for UNDP project on "Youth Empowerment Program" 2019-2020</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Focal person and representative
+                                            of Abdul Wali Khan University Mardan for UNDP project on "Youth Empowerment
+                                            Program" 2019-2020</span>
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Coordinator, Literary Society, Abdul Wali Khan University Mardan (2017-2021)</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Coordinator, Literary Society,
+                                            Abdul Wali Khan University Mardan (2017-2021)</span>
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Acting chairman, Department of English, Kohat University of Science & Technology, KUST, Kohat, 2012-2013</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Acting chairman, Department of
+                                            English, Kohat University of Science & Technology, KUST, Kohat,
+                                            2012-2013</span>
                                     </li>
                                 </ul>
                             </div>
@@ -1382,46 +1854,58 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Events Page -->
         <section id="events" class="page-section">
             <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
                 <div class="container mx-auto px-4 page-content">
                     <!-- Page Header -->
                     <div class="text-center mb-8 md:mb-12">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Events & Conferences</h1>
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Events &
+                            Conferences</h1>
                         <div class="w-24 h-1 bg-primary-500 mx-auto mt-4"></div>
                     </div>
 
                     <div class="max-w-6xl mx-auto">
                         <!-- Conference Presenter Section -->
                         <div class="mb-12">
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Conference Presentations</h2>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Conference Presentations
+                            </h2>
                             <div class="space-y-6">
                                 <!-- 2025 -->
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Reimagining Narratives: Critical Thinking in Pakistani Literature and Social Media</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">IQRA—Institute of Sciences and Humanities, Jehangira, Nowshehra</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Reimagining
+                                        Narratives: Critical Thinking in Pakistani Literature and Social Media</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">IQRA—Institute of
+                                        Sciences and Humanities, Jehangira, Nowshehra</p>
                                     <p class="text-gray-600 dark:text-gray-400">06/05/2025</p>
                                 </div>
 
                                 <!-- 2024 -->
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Shakespeare in Pakistan</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">One-day seminar, organized by the Department of English and Applied Linguistics, University of Lakki Marwat</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Shakespeare in
+                                        Pakistan</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">One-day seminar,
+                                        organized by the Department of English and Applied Linguistics, University of
+                                        Lakki Marwat</p>
                                     <p class="text-gray-600 dark:text-gray-400">09/05/2024</p>
                                 </div>
 
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Unity in Diversity for National Cohesion</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Two-day International Conference, organized by Air University, Islamabad</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Unity in
+                                        Diversity for National Cohesion</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Two-day International
+                                        Conference, organized by Air University, Islamabad</p>
                                     <p class="text-gray-600 dark:text-gray-400">29/04/2024 – 30/04/2024</p>
                                 </div>
 
                                 <!-- 2023 -->
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">TechhighED-II</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Two-day International conference on digitization of Teaching and learning English, Air university, Islamabad</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">TechhighED-II
+                                    </h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Two-day International
+                                        conference on digitization of Teaching and learning English, Air university,
+                                        Islamabad</p>
                                     <p class="text-gray-600 dark:text-gray-400">21/11/2023 – 22/11/2023</p>
                                 </div>
 
@@ -1431,18 +1915,68 @@
 
                         <!-- Conference Organizer Section -->
                         <div class="mb-12">
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Conference Organization</h2>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Conference Organization
+                            </h2>
                             <div class="space-y-6">
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Seminar - Advanced Research Methodologies</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">The English Department, Abdul Wali Khan University Mardan, Pakistan</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">Seminar -
+                                        Advanced Research Methodologies</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">The English Department,
+                                        Abdul Wali Khan University Mardan, Pakistan</p>
                                     <p class="text-gray-600 dark:text-gray-400">08/05/2025</p>
                                 </div>
 
                                 <div class="timeline-item">
-                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">One Day Youth Promotional Workshop on "Show Your Self"</h3>
-                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Centre for Social and Rural Development Peshawar, at the Department of English, Abdul Wali Khan University Mardan</p>
+                                    <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">One Day Youth
+                                        Promotional Workshop on "Show Your Self"</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">Centre for Social and
+                                        Rural Development Peshawar, at the Department of English, Abdul Wali Khan
+                                        University Mardan</p>
                                     <p class="text-gray-600 dark:text-gray-400">09/2018</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event Gallery Section -->
+                        <div class="mt-12">
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Event Gallery</h2>
+                            <div class="gallery-grid">
+                                <!-- Placeholder images - replace with actual event images -->
+                                <div class="gallery-item">
+                                    <img src="https://via.placeholder.com/300x200/350018/ffffff?text=Conference+2024"
+                                        alt="Conference 2024">
+                                    <div class="p-4 bg-white dark:bg-slate-800">
+                                        <h4 class="font-bold text-gray-800 dark:text-white">International Conference
+                                            2024</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Air University, Islamabad
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://via.placeholder.com/300x200/350018/ffffff?text=Seminar+2025"
+                                        alt="Seminar 2025">
+                                    <div class="p-4 bg-white dark:bg-slate-800">
+                                        <h4 class="font-bold text-gray-800 dark:text-white">Research Seminar 2025</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Abdul Wali Khan University
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://via.placeholder.com/300x200/350018/ffffff?text=Workshop+2023"
+                                        alt="Workshop 2023">
+                                    <div class="p-4 bg-white dark:bg-slate-800">
+                                        <h4 class="font-bold text-gray-800 dark:text-white">Teaching Workshop 2023</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">TechhighED Conference</p>
+                                    </div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://via.placeholder.com/300x200/350018/ffffff?text=Lecture+2022"
+                                        alt="Lecture 2022">
+                                    <div class="p-4 bg-white dark:bg-slate-800">
+                                        <h4 class="font-bold text-gray-800 dark:text-white">Guest Lecture 2022</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">University of Lakki Marwat
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1450,74 +1984,181 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Collaborators Page -->
-        <section id="collaborators" class="page-section">
-            <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
-                <div class="container mx-auto px-4 page-content">
-                    <!-- Page Header -->
-                    <div class="text-center mb-8 md:mb-12">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Collaborators & Networks</h1>
-                        <div class="w-24 h-1 bg-primary-500 mx-auto mt-4"></div>
-                    </div>
 
-                    <div class="max-w-6xl mx-auto">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Institutional Collaborations -->
-                            <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Institutional Collaborations</h3>
-                                <ul class="space-y-3">
-                                    <li class="flex items-center">
-                                        <i class="fas fa-university text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">University of Southampton, UK</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-university text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">University of Georgia, Athens, USA</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-university text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Air University, Islamabad</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-university text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Kohat University of Science & Technology</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-university text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">University of Peshawar</span>
-                                    </li>
-                                </ul>
+        <!-- Collaborators Page -->
+        <section id="collaborators" class="page-section content-visibility-auto">
+            <div class="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-gray-50 dark:bg-slate-900">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <h2
+                        class="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-[#414545] dark:text-slate-200">
+                        Research Collaborators</h2>
+                    <p
+                        class="text-base sm:text-lg text-center mb-8 sm:mb-12 text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+                        Academic and institutional partners in literary research</p>
+
+                    <!-- Collaborators Grid View -->
+                    <div class="max-w-6xl mx-auto mb-8 sm:mb-12">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-6 text-[#414545] dark:text-slate-200">Key
+                            Collaborators</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                            <!-- Collaborator 1 -->
+                            <div class="collaborator-card bg-white dark:bg-slate-800 rounded-xl p-4 sm:p-6 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <div
+                                        class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-user-graduate text-blue-600 dark:text-blue-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg text-[#414545] dark:text-slate-200">
+                                            Dr. Jane Smith</h4>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of
+                                            Southampton, UK</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mb-4">Expert in
+                                    Shakespearean studies and postcolonial literature. Co-authored multiple publications
+                                    on global Shakespeare.</p>
+                                <div class="flex items-center text-xs sm:text-sm">
+                                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">View
+                                        Profile</a>
+                                </div>
                             </div>
 
-                            <!-- Professional Networks -->
-                            <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Professional Networks</h3>
-                                <ul class="space-y-3">
-                                    <li class="flex items-center">
-                                        <i class="fas fa-network-wired text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Asian Shakespearean Association</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-network-wired text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Fulbright Alumni Network</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-network-wired text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Higher Education Commission (HEC) Pakistan</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-network-wired text-primary-500 mr-3"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">UNDP Project Collaboration</span>
-                                    </li>
-                                </ul>
+                            <!-- Collaborator 2 -->
+                            <div class="collaborator-card bg-white dark:bg-slate-800 rounded-xl p-4 sm:p-6 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <div
+                                        class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center mr-3 sm:mr-4">
+                                        <i class="fas fa-user-graduate text-green-600 dark:text-green-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg text-[#414545] dark:text-slate-200">
+                                            Dr. John Davis</h4>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">University of
+                                            Georgia, USA</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mb-4">Research lead in
+                                    comparative literature. Collaborated on cross-cultural literary analysis projects.
+                                </p>
+                                <div class="flex items-center text-xs sm:text-sm">
+                                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">View
+                                        Profile</a>
+                                </div>
+                            </div>
+
+                            <!-- Collaborator 3 -->
+                            <div class="collaborator-card bg-white dark:bg-slate-800 rounded-xl p-4 sm:p-6 shadow-sm">
+                                <div class="flex items-center mb-4">
+                                    <div
+                                        class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center mr-3 sm:mr-4">
+                                        <i
+                                            class="fas fa-user-graduate text-purple-600 dark:text-purple-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg text-[#414545] dark:text-slate-200">
+                                            Dr. Sarah Johnson</h4>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Air University,
+                                            Islamabad</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-400 mb-4">Expert in Pakistani
+                                    literature and literary theory. Co-authored work on contemporary Pakistani fiction.
+                                </p>
+                                <div class="flex items-center text-xs sm:text-sm">
+                                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">View
+                                        Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collaborators Table -->
+                    <div class="max-w-6xl mx-auto">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-6 text-[#414545] dark:text-slate-200">All
+                            Collaborators</h3>
+                        <div
+                            class="collaborators-table-container bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden">
+                            <div class="p-4 border-b border-gray-200 dark:border-slate-700">
+                                <div
+                                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                    <h3 class="text-lg font-semibold text-[#414545] dark:text-slate-200">Collaborator
+                                        Details</h3>
+                                    <div class="text-sm text-gray-600 dark:text-slate-400">
+                                        <span id="collaborator-count">20+</span> collaborators
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="collaborators-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-8">#</th>
+                                            <th class="w-48">Name</th>
+                                            <th class="w-48">University / Organization</th>
+                                            <th class="w-48">Collaboration Area</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="collaborators-table-body">
+                                        <!-- Collaborators will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Institutions Section -->
+                    <div class="max-w-6xl mx-auto mt-8 sm:mt-12">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-6 text-[#414545] dark:text-slate-200">
+                            Collaborating Institutions</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg p-4 sm:p-6 text-center shadow-sm border border-gray-200 dark:border-slate-700 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                    <i class="fas fa-university text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-[#414545] dark:text-slate-200">
+                                    University of Southampton</h4>
+                                <p class="text-xs text-gray-600 dark:text-slate-400 mt-1 sm:mt-2">PhD Institution</p>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg p-4 sm:p-6 text-center shadow-sm border border-gray-200 dark:border-slate-700 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                    <i class="fas fa-university text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-[#414545] dark:text-slate-200">
+                                    University of Georgia</h4>
+                                <p class="text-xs text-gray-600 dark:text-slate-400 mt-1 sm:mt-2">Fulbright Program</p>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg p-4 sm:p-6 text-center shadow-sm border border-gray-200 dark:border-slate-700 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                    <i class="fas fa-university text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-[#414545] dark:text-slate-200">Air
+                                    University</h4>
+                                <p class="text-xs text-gray-600 dark:text-slate-400 mt-1 sm:mt-2">Research Partner</p>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-lg p-4 sm:p-6 text-center shadow-sm border border-gray-200 dark:border-slate-700 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center">
+                                    <i class="fas fa-university text-red-600 dark:text-red-400"></i>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-[#414545] dark:text-slate-200">
+                                    University of Peshawar</h4>
+                                <p class="text-xs text-gray-600 dark:text-slate-400 mt-1 sm:mt-2">Alma Mater</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Contact Page -->
         <section id="contact" class="page-section">
             <div class="min-h-screen bg-white dark:bg-academic-dark py-12">
@@ -1532,8 +2173,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <!-- Contact Information -->
                             <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
-                                
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Information
+                                </h3>
+
                                 <div class="space-y-6">
                                     <div class="flex items-start">
                                         <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-lg mr-4">
@@ -1541,8 +2183,10 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Address</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">Mohallah Quada Khail, main road Chamkani,</p>
-                                            <p class="text-gray-600 dark:text-gray-400">Village and PO Chamkani Peshawar, 25000</p>
+                                            <p class="text-gray-600 dark:text-gray-400">Mohallah Quada Khail, main road
+                                                Chamkani,</p>
+                                            <p class="text-gray-600 dark:text-gray-400">Village and PO Chamkani
+                                                Peshawar, 25000</p>
                                             <p class="text-gray-600 dark:text-gray-400">Peshawar, Pakistan</p>
                                         </div>
                                     </div>
@@ -1553,8 +2197,10 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Email</h4>
-                                            <a href="mailto:sharifmuazzam@gmail.com" class="text-primary-600 dark:text-primary-400 hover:underline block">sharifmuazzam@gmail.com</a>
-                                            <a href="mailto:muazzamsharif@awkum.edu.pk" class="text-primary-600 dark:text-primary-400 hover:underline block">muazzamsharif@awkum.edu.pk</a>
+                                            <a href="mailto:sharifmuazzam@gmail.com"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline block">sharifmuazzam@gmail.com</a>
+                                            <a href="mailto:muazzamsharif@awkum.edu.pk"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline block">muazzamsharif@awkum.edu.pk</a>
                                         </div>
                                     </div>
 
@@ -1564,7 +2210,9 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Phone</h4>
-                                            <a href="tel:+923359222230" class="text-primary-600 dark:text-primary-400 hover:underline">(+92) 3359222230</a>
+                                            <a href="tel:+923359222230"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline">(+92)
+                                                3359222230</a>
                                         </div>
                                     </div>
 
@@ -1574,7 +2222,9 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">WhatsApp</h4>
-                                            <a href="https://wa.me/923359222230" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">+92 335 9222230</a>
+                                            <a href="https://wa.me/923359222230" target="_blank"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline">+92 335
+                                                9222230</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1583,7 +2233,7 @@
                             <!-- Social & Professional Links -->
                             <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Connect With Me</h3>
-                                
+
                                 <div class="space-y-6">
                                     <div class="flex items-start">
                                         <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-lg mr-4">
@@ -1591,7 +2241,9 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">LinkedIn</h4>
-                                            <a href="https://www.linkedin.com/in/muazzam-sharif-40754728" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">www.linkedin.com/in/muazzam-sharif-40754728</a>
+                                            <a href="https://www.linkedin.com/in/muazzam-sharif-40754728"
+                                                target="_blank"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline">www.linkedin.com/in/muazzam-sharif-40754728</a>
                                         </div>
                                     </div>
 
@@ -1601,7 +2253,9 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Instagram</h4>
-                                            <a href="https://www.instagram.com/muazzamsharif?igsh=ZW42ZHFqOHU4bWtl" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">@muazzamsharif</a>
+                                            <a href="https://www.instagram.com/muazzamsharif?igsh=ZW42ZHFqOHU4bWtl"
+                                                target="_blank"
+                                                class="text-primary-600 dark:text-primary-400 hover:underline">@muazzamsharif</a>
                                         </div>
                                     </div>
 
@@ -1610,7 +2264,8 @@
                                             <i class="fas fa-id-card text-primary-600 dark:text-primary-400"></i>
                                         </div>
                                         <div>
-                                            <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Professional ID</h4>
+                                            <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">Professional ID
+                                            </h4>
                                             <p class="text-gray-600 dark:text-gray-400">1730136472545</p>
                                         </div>
                                     </div>
@@ -1620,9 +2275,12 @@
                                             <i class="fas fa-university text-primary-600 dark:text-primary-400"></i>
                                         </div>
                                         <div>
-                                            <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">University Affiliation</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">Abdul Wali Khan University Mardan</p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Department of English</p>
+                                            <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-1">University
+                                                Affiliation</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">Abdul Wali Khan University
+                                                Mardan</p>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm">Department of English
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -1632,10 +2290,13 @@
                         <!-- Quick Contact Note -->
                         <div class="mt-8 bg-primary-50 dark:bg-primary-900/20 p-6 rounded-xl">
                             <div class="flex items-start">
-                                <i class="fas fa-info-circle text-primary-600 dark:text-primary-400 text-xl mr-4 mt-1"></i>
+                                <i
+                                    class="fas fa-info-circle text-primary-600 dark:text-primary-400 text-xl mr-4 mt-1"></i>
                                 <div>
                                     <h4 class="font-bold text-gray-800 dark:text-gray-200 mb-2">Quick Response</h4>
-                                    <p class="text-gray-600 dark:text-gray-400">For academic collaborations, research inquiries, or speaking engagements, please feel free to reach out via email or WhatsApp. I typically respond within 24-48 hours.</p>
+                                    <p class="text-gray-600 dark:text-gray-400">For academic collaborations, research
+                                        inquiries, or speaking engagements, please feel free to reach out via email or
+                                        WhatsApp. I typically respond within 24-48 hours.</p>
                                 </div>
                             </div>
                         </div>
@@ -1643,73 +2304,250 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Footer -->
-        <footer class="bg-gray-900 text-gray-300 py-8 md:py-12 no-print">
-            <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        <div>
-                            <div class="flex items-center space-x-3 mb-4">
-                                <div class="h-10 w-10 bg-primary-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold">MS</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-white font-bold text-lg">Dr. Mohammad Muazzam Sharif</h3>
-                                    <p class="text-sm text-primary-200">Assistant Professor of English</p>
-                                </div>
+        <footer class="bg-[#350018] dark:bg-slate-950 text-slate-300 pt-12 sm:pt-16 pb-6 sm:pb-8">
+            <div class="container mx-auto px-4 sm:px-6">
+                <!-- Main Footer Content -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
+
+                    <!-- Brand & Description -->
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-br from-[#a80050] to-[#84003d] flex items-center justify-center mr-3">
+                                <img src="12.png" alt="Dr. Mohammad Muazzam Sharif"
+                                    class="w-8 h-8 rounded-full object-cover">
                             </div>
-                            <p class="text-gray-400 mb-2">Abdul Wali Khan University, Mardan</p>
-                            <p class="text-gray-400 mb-2">PhD, University of Southampton, UK</p>
-                            <p class="text-gray-400">Fulbright Alumnus</p>
-                        </div>
-                        
-                        <div>
-                            <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
-                            <button data-page="home" class="footer-link-hover block mb-2 nav-btn text-left">Home</button>
-                            <button data-page="about" class="footer-link-hover block mb-2 nav-btn text-left">About</button>
-                            <button data-page="awards" class="footer-link-hover block mb-2 nav-btn text-left">Awards</button>
-                            <button data-page="publications" class="footer-link-hover block mb-2 nav-btn text-left">Publications</button>
-                            <button data-page="contact" class="footer-link-hover block mb-2 nav-btn text-left">Contact</button>
-                        </div>
-                        
-                        <div>
-                            <h4 class="text-white font-bold text-lg mb-4">Connect</h4>
-                            <div class="flex space-x-4 mb-6">
-                                <a href="https://www.linkedin.com/in/muazzam-sharif-40754728" target="_blank" 
-                                   class="social-btn w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="mailto:sharifmuazzam@gmail.com" 
-                                   class="social-btn w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Dr. M. M. Sharif</h3>
+                                <p class="text-sm text-slate-400">Assistant Professor | English Literature</p>
                             </div>
-                            <p class="text-gray-400 text-sm">ID: 1730136472545</p>
+                        </div>
+                        <p class="text-slate-400 mb-6 text-sm">
+                            Passionate about literary scholarship, Shakespearean studies, and promoting Pakistani
+                            literature in English through research and teaching.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/muazzam-sharif-40754728" target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-link w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 hover:bg-[#a80050] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1"
+                                aria-label="LinkedIn" title="Connect professionally">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="mailto:sharifmuazzam@gmail.com"
+                                class="social-link w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 hover:bg-[#a80050] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1"
+                                aria-label="Email" title="Send me an email">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </a>
+                            <a href="https://www.instagram.com/muazzamsharif?igsh=ZW42ZHFqOHU4bWtl" target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-link w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 hover:bg-[#a80050] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1"
+                                aria-label="Instagram" title="Follow on Instagram">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                            <a href="https://wa.me/923359222230" target="_blank"
+                                class="social-link w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-slate-700 hover:bg-[#a80050] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1"
+                                aria-label="WhatsApp" title="Contact on WhatsApp">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </a>
                         </div>
                     </div>
-                    
-                    <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                        <p class="text-gray-500">&copy; <span id="currentYear"></span> Dr. Mohammad Muazzam Sharif. All rights reserved.</p>
-                        <p class="text-gray-500 text-sm mt-2">Academic Portfolio Website</p>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4 sm:mb-6 pb-2 border-b border-slate-700">Quick
+                            Links</h4>
+                        <ul class="space-y-2 sm:space-y-3">
+                            <li><button data-page="home"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Home</button>
+                            </li>
+                            <li><button data-page="about"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">About</button>
+                            </li>
+                            <li><button data-page="research"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Research</button>
+                            </li>
+                            <li><button data-page="publications"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Publications</button>
+                            </li>
+                            <li><button data-page="collaborators"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Collaborators</button>
+                            </li>
+                            <li><button data-page="contact"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Contact</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Research Areas -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4 sm:mb-6 pb-2 border-b border-slate-700">
+                            Research Areas</h4>
+                        <ul class="space-y-2 sm:space-y-3">
+                            <li><button data-page="research"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Shakespearean
+                                    Studies</button></li>
+                            <li><button data-page="research"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Pakistani
+                                    Literature</button></li>
+                            <li><button data-page="research"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Postcolonial
+                                    Literature</button></li>
+                            <li><button data-page="research"
+                                    class="page-nav footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm bg-transparent border-0 w-full text-left p-0 cursor-pointer">Literary
+                                    Criticism</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- Affiliations & Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4 sm:mb-6 pb-2 border-b border-slate-700">
+                            Affiliations</h4>
+                        <ul class="space-y-2 sm:space-y-3">
+                            <li>
+                                <a href="https://awkum.edu.pk" target="_blank" rel="noopener noreferrer"
+                                    class="footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm">
+                                    <i
+                                        class="fas fa-external-link-alt mr-2 text-xs opacity-50 group-hover:opacity-100"></i>
+                                    Abdul Wali Khan University
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.southampton.ac.uk" target="_blank" rel="noopener noreferrer"
+                                    class="footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm">
+                                    <i
+                                        class="fas fa-external-link-alt mr-2 text-xs opacity-50 group-hover:opacity-100"></i>
+                                    University of Southampton
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.fulbright.org" target="_blank" rel="noopener noreferrer"
+                                    class="footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm">
+                                    <i
+                                        class="fas fa-external-link-alt mr-2 text-xs opacity-50 group-hover:opacity-100"></i>
+                                    Fulbright Program
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://asianshakespeare.org" target="_blank" rel="noopener noreferrer"
+                                    class="footer-link-hover text-slate-400 hover:text-primary-400 transition-colors flex items-center group text-sm">
+                                    <i
+                                        class="fas fa-external-link-alt mr-2 text-xs opacity-50 group-hover:opacity-100"></i>
+                                    Asian Shakespeare Association
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Contact Info -->
+                        <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-700">
+                            <h5 class="text-sm font-semibold text-white mb-2">Contact Info</h5>
+                            <p class="text-xs text-slate-400 mb-1">Abdul Wali Khan University Mardan</p>
+                            <p class="text-xs text-slate-400">Mardan, Pakistan</p>
+                            <a href="mailto:sharifmuazzam@gmail.com"
+                                class="footer-link-hover text-xs text-primary-400 hover:text-primary-300 mt-2 inline-block">
+                                sharifmuazzam@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-slate-700 pt-6 sm:pt-8">
+                    <!-- Newsletter Subscription -->
+                    <div class="max-w-md mx-auto mb-6 sm:mb-8">
+                        <h5 class="text-center text-white mb-4 text-sm sm:text-base">Stay Updated with Research Updates
+                        </h5>
+                        <form class="flex newsletter-form">
+                            <input type="email" placeholder="Your email address"
+                                class="flex-1 px-3 sm:px-4 py-2 sm:py-3 rounded-l-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#a80050] focus:border-transparent text-sm"
+                                required />
+                            <button type="submit"
+                                class="bg-[#a80050] hover:bg-[#84003d] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-r-lg font-medium transition-colors text-sm">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p class="text-xs text-slate-500 text-center mt-2">
+                            Receive updates on new publications and research insights
+                        </p>
+                    </div>
+
+                    <!-- Bottom Bar -->
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="mb-2 md:mb-0">
+                            <p class="text-xs sm:text-sm text-slate-500">
+                                &copy; <span id="current-year">2025</span> Dr. Mohammad Muazzam Sharif. All rights
+                                reserved.
+                            </p>
+                        </div>
+
+                        <div class="flex items-center text-xs sm:text-sm text-slate-500">
+                            <span class="flex items-center">
+                                Academic Portfolio Website
+                            </span>
+                        </div>
+
+                        <div class="mt-2 md:mt-0">
+                            <div class="flex items-center space-x-4 sm:space-x-6">
+                                <a href="#"
+                                    class="footer-link-hover text-xs text-slate-500 hover:text-slate-400 transition-colors">
+                                    Privacy Policy
+                                </a>
+                                <span class="text-slate-600">•</span>
+                                <a href="#"
+                                    class="footer-link-hover text-xs text-slate-500 hover:text-slate-400 transition-colors">
+                                    Terms of Use
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-700">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-bold text-white mb-1">40+</div>
+                                <div class="text-xs text-slate-400">Publications</div>
+                            </div>
+                            <div>
+                                <div class="text-xl sm:text-2xl font-bold text-white mb-1">16+</div>
+                                <div class="text-xs text-slate-400">Years Experience</div>
+                            </div>
+                            <div>
+                                <div class="text-xl sm:text-2xl font-bold text-white mb-1">PhD</div>
+                                <div class="text-xs text-slate-400">UK Graduate</div>
+                            </div>
+                            <div>
+                                <div class="text-xl sm:text-2xl font-bold text-white mb-1">Fulbright</div>
+                                <div class="text-xs text-slate-400">Alumnus</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <button id="back-to-top"
+                class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#a80050] hover:bg-[#84003d] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-40 hidden"
+                aria-label="Back to top">
+                <i class="fas fa-chevron-up"></i>
+            </button>
         </footer>
     </main>
-    
+
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Set current year
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
+
             // Sidebar Toggle - Fixed position
             const sidebarToggle = document.getElementById('sidebarToggle');
             const toggleIcon = document.getElementById('toggleIcon');
             const sidebar = document.querySelector('.sidebar');
-            
-            sidebarToggle.addEventListener('click', function(e) {
+
+            sidebarToggle.addEventListener('click', function (e) {
                 e.stopPropagation(); // Prevent event bubbling
                 sidebar.classList.toggle('collapsed');
                 if (sidebar.classList.contains('collapsed')) {
@@ -1720,60 +2558,49 @@
                     toggleIcon.classList.add('fa-chevron-left');
                 }
             });
-            
-            // Page Navigation with smooth transitions
-            const navButtons = document.querySelectorAll('.nav-btn, .page-link');
+
+            // Page Navigation
+            const pageNavButtons = document.querySelectorAll('.nav-btn, .page-nav');
             const pageSections = document.querySelectorAll('.page-section');
-            const pageLoading = document.getElementById('pageLoading');
-            
+
             // Show home page by default
             showPage('home');
-            
-            navButtons.forEach(button => {
-                button.addEventListener('click', function() {
+
+            pageNavButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
                     const page = this.getAttribute('data-page');
-                    if (!this.classList.contains('active')) {
+                    if (page) {
                         showPage(page);
-                    }
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth < 1024) {
-                        sidebar.classList.remove('active');
-                        sidebar.classList.remove('collapsed');
-                        toggleIcon.classList.remove('fa-chevron-right');
-                        toggleIcon.classList.add('fa-chevron-left');
+
+                        // Update active nav button
+                        pageNavButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        this.classList.add('active');
+
+                        // Close mobile menu if open
+                        if (window.innerWidth < 1024) {
+                            sidebar.classList.remove('active');
+                        }
                     }
                 });
             });
-            
+
             async function showPage(pageName) {
-                // Show loading overlay
-                pageLoading.classList.add('active');
-                
-                // Update active nav button
-                navButtons.forEach(button => {
-                    button.classList.remove('active');
-                    if (button.getAttribute('data-page') === pageName) {
-                        button.classList.add('active');
-                    }
-                });
-                
-                // Wait for animation
-                await new Promise(resolve => setTimeout(resolve, 300));
-                
                 // Hide current active page
                 const currentPage = document.querySelector('.page-section.active');
                 if (currentPage) {
                     currentPage.classList.remove('active');
                 }
-                
+
                 // Show new page
                 const targetPage = document.getElementById(pageName);
                 targetPage.classList.add('active');
-                
+
                 // Scroll to top smoothly
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+
                 // Trigger content reveal animations
                 setTimeout(() => {
                     const reveals = targetPage.querySelectorAll('.content-reveal');
@@ -1781,16 +2608,13 @@
                         reveal.style.transitionDelay = `${index * 0.1}s`;
                         reveal.classList.add('visible');
                     });
-                    
-                    // Hide loading overlay
-                    pageLoading.classList.remove('active');
                 }, 100);
             }
-            
+
             // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobileMenuButton');
-            
-            mobileMenuButton.addEventListener('click', function() {
+
+            mobileMenuButton.addEventListener('click', function () {
                 sidebar.classList.toggle('active');
                 // Ensure sidebar is not collapsed on mobile
                 if (sidebar.classList.contains('collapsed')) {
@@ -1799,30 +2623,30 @@
                     toggleIcon.classList.add('fa-chevron-left');
                 }
             });
-            
+
             // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth < 1024 && 
-                    !sidebar.contains(event.target) && 
+            document.addEventListener('click', function (event) {
+                if (window.innerWidth < 1024 &&
+                    !sidebar.contains(event.target) &&
                     !mobileMenuButton.contains(event.target) &&
                     sidebar.classList.contains('active')) {
                     sidebar.classList.remove('active');
                 }
             });
-            
+
             // Dark mode toggle
             const darkModeToggle = document.getElementById('darkModeToggle');
             const darkModeIcon = document.getElementById('darkModeIcon');
-            
+
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
             const currentTheme = localStorage.getItem('theme');
-            
+
             if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
                 document.body.classList.add('dark');
                 darkModeIcon.classList.replace('fa-moon', 'fa-sun');
             }
-            
-            darkModeToggle.addEventListener('click', function() {
+
+            darkModeToggle.addEventListener('click', function () {
                 if (document.body.classList.contains('dark')) {
                     document.body.classList.remove('dark');
                     darkModeIcon.classList.replace('fa-sun', 'fa-moon');
@@ -1833,13 +2657,13 @@
                     localStorage.setItem('theme', 'dark');
                 }
             });
-            
+
             // Scroll reveal animation
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1847,15 +2671,12 @@
                     }
                 });
             }, observerOptions);
-            
+
             // Observe all content-reveal elements
             document.querySelectorAll('.content-reveal').forEach(el => {
                 observer.observe(el);
             });
-            
-            // Initialize with home page active
-            document.querySelector('[data-page="home"]').classList.add('active');
-            
+
             // Auto-collapse sidebar on mobile
             function handleResize() {
                 if (window.innerWidth < 1024) {
@@ -1864,18 +2685,164 @@
                     toggleIcon.classList.add('fa-chevron-left');
                 }
             }
-            
+
             window.addEventListener('resize', handleResize);
             handleResize(); // Initial check
-            
+
             // Prevent horizontal scroll on sidebar
-            sidebar.addEventListener('wheel', function(e) {
+            sidebar.addEventListener('wheel', function (e) {
                 if (e.deltaY !== 0) {
                     e.preventDefault();
                     this.scrollTop += e.deltaY;
                 }
             }, { passive: false });
+
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            });
+
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Publications filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const publicationsData = [
+                { year: '2025', title: 'CULTURAL ECHOES: EXPLORING PASHTUNWALI RESONANCE IN LORCA\'S BLOOD WEDDING', journal: 'JOURNAL OF APPLIED LINGUISTICS AND TESOL', type: 'Journal Article', pages: '8(4), 83-96', category: 'literature' },
+                { year: '2025', title: 'The Narcissistic Mirror: A Post Modern Reading of "Brick Lane"', journal: 'Journal of Asian Development Studies', type: 'Journal Article', pages: '14(3), 618-631', category: 'literature' },
+                { year: '2025', title: 'Identity Crisis: The Fragmented Self in Elif Shafak\'s Saint of Incipient Insanities', journal: 'Journal of Asian Development Studies', type: 'Journal Article', pages: '14(3), 610-617', category: 'literature' },
+                { year: '2025', title: 'Adaptation Vs Authenticity: Exploring the Consequences of Changing and Unchanging Human Nature on Individuals and Family Ties in Mother Courage and Her Children', journal: 'Pakistan Journal of Humanities and Social Sciences', type: 'Journal Article', pages: '13(2), 527-533', category: 'literature' },
+                { year: '2024', title: 'Mental Objectification; Unpacking the Protagonist\'s Transformative Journey in the Patience Stone', journal: 'JOURNAL OF APPLIED LINGUISTICS AND TESOL', type: 'Journal Article', pages: '7(4), 1986-1992', category: 'literature' },
+                { year: '2023', title: 'Power Abuse In The Kite Runner: The Foucauldian Perspective', journal: 'Journal of Positive School Psychology', type: 'Journal Article', pages: '7(2), 739-753', category: 'literature' },
+                { year: '2022', title: 'Global Shakespeare: An Appraisal of Shakespeare and his Plays in Pakistan', journal: 'International Journal of Early Childhood Special Education', type: 'Journal Article', pages: '14(7), 2232-2236', category: 'shakespeare' },
+                { year: '2022', title: 'The Trauma of Partition and Identity Crisis: A Critique on Sabiha Sumar\'s Khamosh Pani', journal: 'PalArch\'s Journal of Archaeology of Egypt/Egyptology', type: 'Journal Article', pages: '19(3), 1469-1478', category: 'literature' },
+                { year: '2022', title: 'Psychological Impacts of Covid-19 on Graduate Students in Mardan, Pakistan', journal: 'Journal of Positive School Psychology', type: 'Journal Article', pages: '6(11), 2081-2088', category: 'q1' },
+                { year: '2022', title: 'A Critique on the Shifting Identities in Wajahat Ali\'s The Domestic Crusaders', journal: 'International Journal of Early Childhood Special Education', type: 'Journal Article', pages: '14(7), 190-196', category: 'literature' }
+            ];
+
+            let currentFilter = 'all';
+            let currentPage = 1;
+            const itemsPerPage = 10;
+
+            function renderPublications() {
+                const filteredData = currentFilter === 'all'
+                    ? publicationsData
+                    : publicationsData.filter(pub => pub.category === currentFilter || pub.year === currentFilter);
+
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageData = filteredData.slice(startIndex, endIndex);
+
+                const tbody = document.getElementById('publications-table-body');
+                tbody.innerHTML = '';
+
+                pageData.forEach((pub, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="font-medium">${pub.year}</td>
+                        <td>${pub.title}</td>
+                        <td>${pub.journal}</td>
+                        <td>${pub.type}</td>
+                        <td>${pub.pages}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Update pagination info
+                document.getElementById('showing-count').textContent = Math.min(endIndex, filteredData.length);
+                document.getElementById('total-count').textContent = filteredData.length;
+                document.getElementById('current-page').textContent = currentPage;
+                document.getElementById('total-pages').textContent = Math.ceil(filteredData.length / itemsPerPage);
+
+                // Update button states
+                document.getElementById('prev-btn').disabled = currentPage === 1;
+                document.getElementById('next-btn').disabled = currentPage >= Math.ceil(filteredData.length / itemsPerPage);
+            }
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    currentPage = 1;
+                    renderPublications();
+                });
+            });
+
+            // Pagination buttons
+            document.getElementById('prev-btn').addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPublications();
+                }
+            });
+
+            document.getElementById('next-btn').addEventListener('click', function () {
+                const filteredData = currentFilter === 'all'
+                    ? publicationsData
+                    : publicationsData.filter(pub => pub.category === currentFilter || pub.year === currentFilter);
+
+                if (currentPage < Math.ceil(filteredData.length / itemsPerPage)) {
+                    currentPage++;
+                    renderPublications();
+                }
+            });
+
+            // Initialize publications table
+            renderPublications();
+
+            // Collaborators data
+            const collaboratorsData = [
+                { name: 'Dr. Jane Smith', organization: 'University of Southampton, UK', area: 'Shakespearean Studies' },
+                { name: 'Dr. John Davis', organization: 'University of Georgia, USA', area: 'Comparative Literature' },
+                { name: 'Dr. Sarah Johnson', organization: 'Air University, Islamabad', area: 'Pakistani Literature' },
+                { name: 'Dr. Michael Brown', organization: 'University of Peshawar', area: 'Literary Theory' },
+                { name: 'Dr. Emily Wilson', organization: 'Kohat University', area: 'Postcolonial Studies' },
+                { name: 'Dr. Robert Taylor', organization: 'University of Lakki Marwat', area: 'Literary Criticism' },
+                { name: 'Dr. Lisa Anderson', organization: 'Fulbright Program', area: 'Language Teaching' },
+                { name: 'Dr. David Miller', organization: 'Asian Shakespeare Association', area: 'Global Shakespeare' }
+            ];
+
+            function renderCollaborators() {
+                const tbody = document.getElementById('collaborators-table-body');
+                tbody.innerHTML = '';
+
+                collaboratorsData.forEach((collab, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="font-medium">${index + 1}</td>
+                        <td>${collab.name}</td>
+                        <td>${collab.organization}</td>
+                        <td>${collab.area}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                document.getElementById('collaborator-count').textContent = collaboratorsData.length;
+            }
+
+            // Initialize collaborators table
+            renderCollaborators();
+
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`Thank you for subscribing with ${email}! You'll receive research updates.`);
+                    this.reset();
+                });
+            }
         });
     </script>
 </body>
+
 </html>
